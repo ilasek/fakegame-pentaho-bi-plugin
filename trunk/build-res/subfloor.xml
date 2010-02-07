@@ -932,8 +932,8 @@ TYPICAL TARGET SEQUENCE
       using the ivy dependencies.
       ====================================================================-->
   <target name="clean-jars">
-    <delete dir="${lib.dir}" />
-    <delete dir="${testlib.dir}" />
+    <!--delete dir="${lib.dir}" />
+    <delete dir="${testlib.dir}" /-->
   </target>
 
 
