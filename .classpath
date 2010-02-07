@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test-src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/batik-dom-1.7.jar"/>
+	<classpathentry kind="lib" path="lib/batik-svggen-1.7.jar"/>
+	<classpathentry kind="lib" path="lib/binding-2.0.5.jar" sourcepath="lib/binding-2.0.5-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/FGPentahoBiPlugin/lib/binding-2.0.5-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/colt-1.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-cli-1.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-api-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/configurations-0.6.1-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/docking-1.5.0.jar"/>
+	<classpathentry kind="lib" path="lib/forms_rt-7.0.3.jar"/>
+	<classpathentry kind="lib" path="lib/forms-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/gui-laf-1.5.0.jar"/>
+	<classpathentry kind="lib" path="lib/j3dcore-1.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/j3dutils-1.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/jasperreports-3.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jcool-1.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/jfreechart-1.0.9.jar"/>
+	<classpathentry kind="lib" path="lib/jogl-1.1.1-rc6.jar"/>
+	<classpathentry kind="lib" path="lib/jopas-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jsc-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jung-1.7.6.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="lib/mallet-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/odfdom-0.6.16.jar"/>
+	<classpathentry kind="lib" path="lib/pentaho-bi-platform-api-TRUNK-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/poi-contrib-3.1-FINAL.jar"/>
+	<classpathentry kind="lib" path="lib/reports-1.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/swing-layout-1.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/swing-layout-1.0.3.jar"/>
+	<classpathentry kind="lib" path="lib/vecmath-1.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/weka-light-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/xercesImpl-2.9.1.jar"/>
+	<classpathentry kind="lib" path="lib/xstream-1.2.2.jar"/>
+	<classpathentry kind="lib" path="lib/game-core-1.0-SNAPSHOT.jar" sourcepath="/game-core"/>
+	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?ivyXmlPath=ivy.xml&amp;confs=*"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

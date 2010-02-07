@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin title='Sample plugin xml for FGPentahoBiPlugin'>
+  <webservice id='FGPentahoBiPlugin' type='xml' title='FGPentahoBiPlugin web service' description='A sample service' class='cz.ilasek.pentaho.biplugin.fakegame.FakeGameAction' />
+  <bean id='FakeGameAction' class='cz.ilasek.pentaho.biplugin.fakegame.FakeGameAction' />
+</plugin>

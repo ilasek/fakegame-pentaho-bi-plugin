@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivysettings>
+  <property name="ivy.local.default.root" value="${ivy.default.ivy.user.dir}/local" override="true"/>
+  <property name="ivy.local.default.artifact.pattern" value="[organisation]/[module]/[revision]/[type]s/[artifact]-[revision].[ext]" override="false"/>
+
+  <settings defaultResolver="default"/>
+  <include url="${ivy.default.settings.dir}/ivysettings-public.xml"/>
+  <resolvers>
+  	<chain name="shared">
+        <dual name="pentaho">
+    		<url name="pentaho-ivy">
+    		  <ivy pattern="http://repo.pentaho.org/artifactory/repo/[organisation]/[module]/[revision]/[module]-[revision].ivy.xml" />
+    		</url>
+        	<ibiblio name="pentaho-mvn" m2compatible="true" root="http://repo.pentaho.org/artifactory/repo"/>
+    	</dual>
+        <dual name="felk">
+            <url name="felk-ivy">
+              <ivy pattern="http://neuron.felk.cvut.cz:8080/artifactory/repo/[organisation]/[module]/[revision]/[module]-[revision].ivy.xml" />
+            </url>
+            <ibiblio name="felk-mvn" m2compatible="true" root="http://neuron.felk.cvut.cz:8080/artifactory/repo"/>
+        </dual>
+        <dual name="felk-snapshots">
+            <url name="felk-snapshots-ivy">
+              <ivy pattern="http://neuron.felk.cvut.cz:8080/artifactory/repo/snapshots-only/[organisation]/[module]/[revision]/[module]-[revision].ivy.xml" />
+            </url>
+            <ibiblio name="felk-snapshots-mvn" m2compatible="true" root="http://neuron.felk.cvut.cz:8080/artifactory/repo/snapshots-only"/>
+        </dual>
+        <dual name="jboss">
+            <url name="jboss-ivy">
+              <ivy pattern="http://repository.jboss.org/maven2/[organisation]/[module]/[revision]/[module]-[revision].ivy.xml" />
+            </url>
+            <ibiblio name="jboss-mvn" m2compatible="true" root="http://repository.jboss.org/maven2"/>
+        </dual>        
+    </chain>
+  </resolvers>
+  <include url="${ivy.default.settings.dir}/ivysettings-local.xml"/>
+  <include url="${ivy.default.settings.dir}/ivysettings-main-chain.xml"/>
+  <include url="${ivy.default.settings.dir}/ivysettings-default-chain.xml"/>
+</ivysettings>
