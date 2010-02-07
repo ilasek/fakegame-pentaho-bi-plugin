@@ -28,7 +28,7 @@
     <dependency org='org.apache.xmlgraphics' name='batik-dom' rev='1.7' transitive='true' />
     <dependency org='org.apache.xmlgraphics' name='batik-svggen' rev='1.7' transitive='true' />
     <dependency org='edu.umass.cs.mallet' name='mallet' rev='1.0' transitive='false'  />
-    <dependency org='cz.cvut.felk.cig' name='jcool' rev='1.0-SNAPSHOT' transitive='false' />-->
+    <dependency org='cz.cvut.felk.cig' name='jcool' rev='1.0-SNAPSHOT' transitive='false' />
     <dependency org='com.thoughtworks.xstream' name='xstream' rev='1.2.2' transitive='true' />
     <dependency org='org.jopas' name='jopas' rev='1.0' transitive='false' />
     <dependency org='fake-game' name='reports' rev='1.0-SNAPSHOT' transitive='true' />
@@ -36,7 +36,7 @@
     <dependency org='net.java.dev.swing-layout' name='swing-layout' rev='1.0.2' transitive='false' />
     <dependency org='org.swinglabs' name='swing-layout' rev='1.0.3' transitive='false' />
     <dependency org='org.swinglabs' name='swing-layout' rev='1.0.3' transitive='false' />
-    <!--  <dependency org='xerces' name='xercesImpl' rev='2.9.1' transitive='true' />
+    <dependency org='xerces' name='xercesImpl' rev='2.9.1' transitive='true' />
     <dependency org='jasperreports' name='jasperreports' rev='3.1.0' transitive='false' />
     <dependency org='colt' name='colt' rev='1.2.0' transitive='false' />
     <dependency org='weka' name='weka-light' rev='1.0.1' transitive='false' />
