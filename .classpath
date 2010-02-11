@@ -3,43 +3,85 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test-src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/activation-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/asm-3.0.jar"/>
+	<classpathentry kind="lib" path="lib/asm-commons-3.0.jar"/>
+	<classpathentry kind="lib" path="lib/asm-tree-3.0.jar"/>
+	<classpathentry kind="lib" path="lib/batik-awt-util-1.7.jar"/>
+	<classpathentry kind="lib" path="lib/batik-css-1.7.jar"/>
 	<classpathentry kind="lib" path="lib/batik-dom-1.7.jar"/>
+	<classpathentry kind="lib" path="lib/batik-ext-1.7.jar"/>
 	<classpathentry kind="lib" path="lib/batik-svggen-1.7.jar"/>
-	<classpathentry kind="lib" path="lib/binding-2.0.5.jar" sourcepath="lib/binding-2.0.5-sources.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="jar:platform:/resource/FGPentahoBiPlugin/lib/binding-2.0.5-javadoc.jar!/"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="lib/batik-util-1.7.jar"/>
+	<classpathentry kind="lib" path="lib/batik-xml-1.7.jar"/>
+	<classpathentry kind="lib" path="lib/bcmail-jdk14-136.jar"/>
+	<classpathentry kind="lib" path="lib/bcprov-jdk14-136.jar"/>
+	<classpathentry kind="lib" path="lib/binding-2.0.5.jar"/>
 	<classpathentry kind="lib" path="lib/colt-1.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-beanutils-1.7.0.jar"/>
+	<classpathentry kind="lib" path="lib/commons-beanutils-core-1.8.0.jar"/>
 	<classpathentry kind="lib" path="lib/commons-cli-1.2.jar"/>
-	<classpathentry kind="lib" path="lib/commons-logging-api-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="lib/commons-configuration-1.6.jar"/>
+	<classpathentry kind="lib" path="lib/commons-digester-1.8.jar"/>
+	<classpathentry kind="lib" path="lib/commons-lang-2.4.jar"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.0.3.jar"/>
 	<classpathentry kind="lib" path="lib/configurations-0.6.1-SNAPSHOT.jar"/>
 	<classpathentry kind="lib" path="lib/docking-1.5.0.jar"/>
+	<classpathentry kind="lib" path="lib/DynamicJasper-2.1.0.jar"/>
 	<classpathentry kind="lib" path="lib/forms_rt-7.0.3.jar"/>
 	<classpathentry kind="lib" path="lib/forms-1.2.1.jar"/>
+	<classpathentry kind="lib" path="lib/freemarker-2.3.4.jar"/>
+	<classpathentry kind="lib" path="lib/game-core-1.0-SNAPSHOT.jar" sourcepath="/game-core"/>
+	<classpathentry kind="lib" path="lib/gluegen-rt-1.0b05.jar"/>
 	<classpathentry kind="lib" path="lib/gui-laf-1.5.0.jar"/>
+	<classpathentry kind="lib" path="lib/hibernate-validator-4.0.0.Beta1.jar"/>
+	<classpathentry kind="lib" path="lib/itext-2.1.0.jar"/>
 	<classpathentry kind="lib" path="lib/j3dcore-1.5.1.jar"/>
 	<classpathentry kind="lib" path="lib/j3dutils-1.5.1.jar"/>
 	<classpathentry kind="lib" path="lib/jasperreports-3.1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jasperreports-xml-schema-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb-api-2.1.jar"/>
+	<classpathentry kind="lib" path="lib/jaxb-impl-2.1.3.jar"/>
+	<classpathentry kind="lib" path="lib/jcommon-1.0.12.jar"/>
 	<classpathentry kind="lib" path="lib/jcool-1.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/jdom-1.0.jar"/>
+	<classpathentry kind="lib" path="lib/jdtcore-3.1.0.jar"/>
 	<classpathentry kind="lib" path="lib/jfreechart-1.0.9.jar"/>
 	<classpathentry kind="lib" path="lib/jogl-1.1.1-rc6.jar"/>
 	<classpathentry kind="lib" path="lib/jopas-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/jsc-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/jung-1.7.6.jar"/>
+	<classpathentry kind="lib" path="lib/junit-4.5.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.14.jar"/>
 	<classpathentry kind="lib" path="lib/mallet-1.0.jar"/>
 	<classpathentry kind="lib" path="lib/odfdom-0.6.16.jar"/>
+	<classpathentry kind="lib" path="lib/ognl-2.6.7.jar"/>
+	<classpathentry kind="lib" path="lib/oscore-2.2.4.jar"/>
 	<classpathentry kind="lib" path="lib/pentaho-bi-platform-api-TRUNK-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/poi-3.1-FINAL.jar"/>
 	<classpathentry kind="lib" path="lib/poi-contrib-3.1-FINAL.jar"/>
 	<classpathentry kind="lib" path="lib/reports-1.0-SNAPSHOT.jar"/>
+	<classpathentry kind="lib" path="lib/rife-continuations-0.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.5.6.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.4.2.jar"/>
+	<classpathentry kind="lib" path="lib/stax-api-1.0-2.jar"/>
+	<classpathentry kind="lib" path="lib/stax-api-1.0.1.jar"/>
 	<classpathentry kind="lib" path="lib/swing-layout-1.0.2.jar"/>
 	<classpathentry kind="lib" path="lib/swing-layout-1.0.3.jar"/>
+	<classpathentry kind="lib" path="lib/validation-api-1.0.CR2.jar"/>
 	<classpathentry kind="lib" path="lib/vecmath-1.5.1.jar"/>
+	<classpathentry kind="lib" path="lib/webwork-2.2.4.jar"/>
 	<classpathentry kind="lib" path="lib/weka-light-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/xalan-2.6.0.jar"/>
 	<classpathentry kind="lib" path="lib/xercesImpl-2.9.1.jar"/>
-	<classpathentry kind="lib" path="lib/xstream-1.2.2.jar"/>
-	<classpathentry kind="lib" path="lib/game-core-1.0-SNAPSHOT.jar" sourcepath="/game-core"/>
-	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?ivyXmlPath=ivy.xml&amp;confs=*"/>
+	<classpathentry kind="lib" path="lib/xml-apis-1.3.04.jar"/>
+	<classpathentry kind="lib" path="lib/xml-apis-ext-1.3.04.jar"/>
+	<classpathentry kind="lib" path="lib/xmlbeans-2.4.0.jar"/>
+	<classpathentry kind="lib" path="lib/xpp3_min-1.1.3.4.O.jar"/>
+	<classpathentry kind="lib" path="lib/xstream-1.2.2.jar" sourcepath="/home/ivo/.ivy2/cache/com.thoughtworks.xstream/xstream/sources/xstream-1.3-sources.jar"/>
+	<classpathentry kind="lib" path="lib/xwork-1.2.1.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/bi-platform-engine-core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/pentaho-commons-connections"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

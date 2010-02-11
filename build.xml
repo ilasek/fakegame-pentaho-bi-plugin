@@ -23,7 +23,7 @@
       <include name="*.jar" />
     </fileset>
     <fileset dir="${pentaho.lib.dir}">
-      <include name="pentaho-bi-platform-*.jar" />
+      <include name="pentaho-*.jar" />
     </fileset>
     <dirset dir="${pentaho.classes.dir}" />
   </path>
@@ -32,7 +32,7 @@
   except for pentaho platform jars which the platform provides -->
   <target name="assemble.copy-libs">
     <copy todir="${approot.stage.dir}/lib">
-      <fileset dir="${lib.dir}" excludes="pentaho-bi-platform-*.jar" />
+      <fileset dir="${lib.dir}" excludes="pentaho-*.jar" />
       <fileset file="${dist.dir}/${ivy.artifact.id}-${project.revision}.jar" />
     </copy>
   </target>
