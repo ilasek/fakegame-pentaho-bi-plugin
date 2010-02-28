@@ -5,14 +5,11 @@ import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.pentaho.commons.connection.IPentahoMetaData;
 import org.pentaho.commons.connection.IPentahoResultSet;
 import org.pentaho.platform.api.action.IStreamingAction;
 import org.pentaho.platform.engine.core.system.PentahoSystem;
 
-import configuration.fakegame.ImportFileConfig;
 import fakegame.flow.Configurations;
-import fakegame.flow.profiles.DMBatchProfile;
 import fakegame.flow.profiles.DMBatchProfile.Strategy;
 
 public class FakeGameAction implements IStreamingAction 
@@ -44,7 +41,14 @@ public class FakeGameAction implements IStreamingAction
     private IPentahoResultSet data;
 
     private OutputStream responseStream;
-    private String responseMessage;    
+    private String responseMessage; 
+    
+    private final String reportDirectoryName;
+    
+    public FakeGameAction()
+    {
+        reportDirectoryName = generateReportDirectoryName();
+    }
     
     @Override
     public String getMimeType(String arg0) {
@@ -53,13 +57,12 @@ public class FakeGameAction implements IStreamingAction
 
     @Override
     public void execute() throws Exception {
-        IPentahoMetaData meta = data.getMetaData();
-        StringBuilder html = new StringBuilder("<html><h1>Moje zpráva</h1>");
-        html.append("<p>" + experimentSeries + " ... " + configurationDirectory + "</p>");
-        html.append("<p>... Num of model configs " + fgConfigurations.getNumOfModelConfigs() + "</p>");
-        html.append("</html>");
-               
-        responseMessage = html.toString();
+//        StringBuilder html = new StringBuilder("<html><h1>Moje zpráva</h1>");
+//        html.append("<p>" + experimentSeries + " ... " + configurationDirectory + "</p>");
+//        html.append("<p>... Num of model configs " + fgConfigurations.getNumOfModelConfigs() + "</p>");
+//        html.append("</html>");
+//               
+//        responseMessage = html.toString();
         
         
         File reportDir = prepareReportDirectory();
@@ -76,20 +79,24 @@ public class FakeGameAction implements IStreamingAction
 //        boolean series = false; // parameter series
 //        DMBatchProfile.Strategy strategy = DMBatchProfile.Strategy.CROSSVALIDATION;
 //        String reportFile = "/home/ivo/workspace/fakegame/core/trunk/target/data/iris.txt"; // report file
-        ImportFileConfig importFileConfig = (ImportFileConfig) fgConfigurations.getOperationsConfig(ImportFileConfig.class);
-        importFileConfig.setDatasetFileName("/home/ivo/workspace/fakegame/core/trunk/target/data/iris.txt");
+//        ImportFileConfig importFileConfig = (ImportFileConfig) fgConfigurations.getOperationsConfig(ImportFileConfig.class);
+//        importFileConfig.setDatasetFileName("/home/ivo/workspace/fakegame/core/trunk/target/data/iris.txt");
         
-        DMBatchProfile profile = new DMBatchProfile(fgConfigurations, fgTrainTestStrategy, 
-                fgExperimentSeries, reportFilePrefix);
+//        DMBatchProfile profile = new DMBatchProfile(fgConfigurations, fgTrainTestStrategy, 
+//                fgExperimentSeries, reportFilePrefix);
+        
+        DMPentahoBIProfile profile = new DMPentahoBIProfile(fgConfigurations, fgTrainTestStrategy, 
+              fgExperimentSeries, reportFilePrefix, data);
         profile.run();
+        StringBuffer report = profile.getPentahoBIHTMLReport(getReportDirectoryName());
         
-        responseStream.write(responseMessage.getBytes());
+        responseStream.write(report.toString().getBytes());
     }
     
     private File prepareReportDirectory()
     {
         String tmpDir = PentahoSystem.getApplicationContext().getSolutionPath(PENTAHO_TMP_DIRECTORY);
-        File reportDir = new File(tmpDir + "/" + generateReportDirectoryName());
+        File reportDir = new File(tmpDir + "/" + getReportDirectoryName());
         reportDir.mkdir();
         
         return reportDir;
@@ -194,6 +201,13 @@ public class FakeGameAction implements IStreamingAction
      */
     public IPentahoResultSet getData() {
         return data;
+    }
+
+    /**
+     * @return the reportDirectoryName
+     */
+    private String getReportDirectoryName() {
+        return reportDirectoryName;
     }
 
 }
