@@ -2,4 +2,7 @@
 <plugin title='Sample plugin xml for FGPentahoBiPlugin'>
   <webservice id='FGPentahoBiPlugin' type='xml' title='FGPentahoBiPlugin web service' description='A sample service' class='cz.ilasek.pentaho.biplugin.fakegame.FakeGameAction' />
   <bean id='FakeGameAction' class='cz.ilasek.pentaho.biplugin.fakegame.FakeGameAction' />
+  <static-paths>
+     <static-path url="/fake-game-static/report-html" localFolder="report-html"/>
+  </static-paths>  
 </plugin>

@@ -22,13 +22,13 @@
       <sources> 
         <request>experimentSeries</request> 
       </sources>  
-      <default-value><![CDATA[true]]></default-value> 
+      <default-value><![CDATA[false]]></default-value> 
     </experimentSeries>  
     <trainTestStrategy type="string"> 
       <sources> 
         <request>trainTestStrategy</request> 
       </sources>  
-      <default-value><![CDATA[train-test]]></default-value> 
+      <default-value><![CDATA[whole-set]]></default-value> 
     </trainTestStrategy> 
   </inputs>
 
@@ -43,30 +43,30 @@
     </responseMessage> 
   </outputs>
 
-  <resources>
-    <transformation-file>
-      <file>
-        <location>/home/ivo/workspace/tomcat-pci-test/biserver-ce/pentaho-solutions/bi-developers/FakeGame/transformation.ktr</location>
-        <mime-type>text/plain</mime-type>
-      </file>
-    </transformation-file>
+  <resources> 
+    <transformation-file> 
+      <file> 
+        <location>/home/ivo/workspace/tomcat-pci-test/biserver-ce/pentaho-solutions/bi-developers/FakeGame/transformation.ktr</location>  
+        <mime-type>text/plain</mime-type> 
+      </file> 
+    </transformation-file> 
   </resources>
   
   <actions> 
-    <action-definition>
+    <action-definition> 
       <component-name>KettleComponent</component-name>
       <action-type>Pentaho Data Integration</action-type>
-      <action-resources>
-        <transformation-file type="resource"/>
+      <action-resources> 
+        <transformation-file type="resource"/> 
       </action-resources>
-      <action-outputs>
-        <transformation-output-rows type="result-set" mapping="data"/>
+      <action-outputs> 
+        <transformation-output-rows type="result-set" mapping="data"/> 
       </action-outputs>
-      <component-definition>
-        <monitor-step><![CDATA[Output]]></monitor-step>
-      </component-definition>
+      <component-definition> 
+        <monitor-step><![CDATA[Output]]></monitor-step> 
+      </component-definition> 
     </action-definition>
-
+  
     <action-definition> 
       <component-name>FakeGameAction</component-name>
       <action-type>Fake Game Action</action-type>
@@ -74,7 +74,7 @@
         <configurationDirectory type="string"/>  
         <experimentSeries type="string"/>  
         <trainTestStrategy type="string"/>  
-        <data type="result-set"/>
+        <data type="result-set"/> 
       </action-inputs>
       <action-resources/>
       <action-outputs> 

@@ -767,7 +767,7 @@ div.fakereport .bar {
 }
 
 #bar__top {
-    background-image: url('heading.jpg');
+    background-image: url('/pentaho/content/fake-game-static/report-html/heading.jpg');
     background-repeat: no-repeat;
     height: 90px;
     padding: 0px;
