@@ -1,9 +1,18 @@
 package cz.ilasek.pentaho.biplugin.fakegame;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 
 import org.pentaho.commons.connection.IPentahoResultSet;
 import org.pentaho.platform.api.action.IStreamingAction;
@@ -21,6 +30,9 @@ public class FakeGameAction implements IStreamingAction
     private static final String PENTAHO_TMP_DIRECTORY = "system/tmp";
     private static final String REPORT_DIR_PREFIX = "fgreport_";
     private static final String REPORT_FILE_PREFIX = "fghtmlreport_";
+    private static final String CFG_DIR_PREFIX = "fgcfg_";
+    
+    private static final int BUFFER = 2048;
     
     private static final Map<String, Strategy> trainTestStrategyMap;
     
@@ -33,21 +45,26 @@ public class FakeGameAction implements IStreamingAction
     
     private boolean fgExperimentSeries = false;
     private Strategy fgTrainTestStrategy = Strategy.CROSSVALIDATION;
-    private Configurations fgConfigurations;    
     
+    /* Inputs */
     private String experimentSeries;
     private String trainTestStrategy;
-    private String configurationDirectory;
     private IPentahoResultSet data;
 
+    /* Resources */
+    private InputStream configZip;
+    
+    /* Outputs */
     private OutputStream responseStream;
-    private String responseMessage; 
+    private OutputStream zippedReportStream;
     
     private final String reportDirectoryName;
+    private final String configDirectoryName;
     
     public FakeGameAction()
     {
-        reportDirectoryName = generateReportDirectoryName();
+        reportDirectoryName = generateUniqueDirectoryName(REPORT_DIR_PREFIX);
+        configDirectoryName = generateUniqueDirectoryName(CFG_DIR_PREFIX);
     }
     
     @Override
@@ -57,54 +74,103 @@ public class FakeGameAction implements IStreamingAction
 
     @Override
     public void execute() throws Exception {
-//        StringBuilder html = new StringBuilder("<html><h1>Moje zpráva</h1>");
-//        html.append("<p>" + experimentSeries + " ... " + configurationDirectory + "</p>");
-//        html.append("<p>... Num of model configs " + fgConfigurations.getNumOfModelConfigs() + "</p>");
-//        html.append("</html>");
-//               
-//        responseMessage = html.toString();
-        
-        
         File reportDir = prepareReportDirectory();
+        File cfgDir = prepareConfigDirectory(reportDir);
+        
         String reportFilePrefix = reportDir.getAbsolutePath() + "/" + REPORT_FILE_PREFIX; 
-        
-//        InputStream input = new FileInputStream(new File("/home/ivo/Dokumenty/Skola/11semestr/X36PM2/weka_doc/WekaManual-3.6.0.pdf"));
-//        
-//        byte[] bytes = new byte[512];
-//        int bytesRead = 0;
-//        while ((bytesRead = input.read(bytes)) > 0)
-//            responseStream.write(bytes, 0, bytesRead);        
-
-//        Configurations configurations = new Configurations(new File("/home/ivo/workspace/fakegame/core/trunk/target/cfg/fake/quick_linear")); // resource - adresar cfg/quicklinear
-//        boolean series = false; // parameter series
-//        DMBatchProfile.Strategy strategy = DMBatchProfile.Strategy.CROSSVALIDATION;
-//        String reportFile = "/home/ivo/workspace/fakegame/core/trunk/target/data/iris.txt"; // report file
-//        ImportFileConfig importFileConfig = (ImportFileConfig) fgConfigurations.getOperationsConfig(ImportFileConfig.class);
-//        importFileConfig.setDatasetFileName("/home/ivo/workspace/fakegame/core/trunk/target/data/iris.txt");
-        
-//        DMBatchProfile profile = new DMBatchProfile(fgConfigurations, fgTrainTestStrategy, 
-//                fgExperimentSeries, reportFilePrefix);
+        Configurations fgConfigurations = new Configurations(cfgDir);
         
         DMPentahoBIProfile profile = new DMPentahoBIProfile(fgConfigurations, fgTrainTestStrategy, 
               fgExperimentSeries, reportFilePrefix, data);
         profile.run();
         StringBuffer report = profile.getPentahoBIHTMLReport(getReportDirectoryName());
         
-        responseStream.write(report.toString().getBytes());
+        if (responseStream != null)
+            responseStream.write(report.toString().getBytes());
+        
+        writeZippedReport();
+    }
+    
+    private File prepareConfigDirectory(final File parentDirectory) throws IOException
+    {
+        String tmpDir = PentahoSystem.getApplicationContext().getSolutionPath(PENTAHO_TMP_DIRECTORY);
+        File cfgDir = new File(tmpDir + System.getProperty("file.separator") + getConfigDirectoryName());
+        cfgDir.mkdir();
+        
+        unzipConfig(cfgDir);
+        
+        return cfgDir;
+    }
+    
+    private void unzipConfig(File cfgDir) throws IOException
+    {
+        BufferedOutputStream dest = null;
+        ZipInputStream zis = new ZipInputStream(new BufferedInputStream(configZip));
+        ZipEntry entry;
+        while ((entry = zis.getNextEntry()) != null) {
+            int count;
+            byte data[] = new byte[BUFFER];
+            // write the files to the disk
+            FileOutputStream fos = new FileOutputStream(cfgDir.getPath() + System.getProperty("file.separator") + entry.getName());
+            dest = new BufferedOutputStream(fos, BUFFER);
+            while ((count = zis.read(data, 0, BUFFER)) != -1) {
+                dest.write(data, 0, count);
+            }
+            dest.flush();
+            dest.close();
+        }
+        zis.close();
+    }
+    
+    private void writeZippedReport() throws IOException
+    {
+        if (zippedReportStream != null)
+        {
+            ZipOutputStream zout = new ZipOutputStream(zippedReportStream);
+            File reportDir = new File(getReportDirectory());
+            File[] reportFiles = reportDir.listFiles();
+            
+            for (File file : reportFiles)
+            {
+                FileInputStream in = new FileInputStream(file);
+    
+                // Add ZIP entry to output stream.
+                zout.putNextEntry(new ZipEntry(file.getName()));
+    
+                // Transfer bytes from the file to the ZIP file
+                int len;
+                byte[] buf  = new byte[BUFFER];
+                while ((len = in.read(buf)) > 0) {
+                    zout.write(buf, 0, len);
+                }
+    
+                // Complete the entry
+                zout.closeEntry();
+                in.close();            
+            }
+            zout.close();
+        }
     }
     
     private File prepareReportDirectory()
     {
-        String tmpDir = PentahoSystem.getApplicationContext().getSolutionPath(PENTAHO_TMP_DIRECTORY);
-        File reportDir = new File(tmpDir + "/" + getReportDirectoryName());
+        
+        File reportDir = new File(getReportDirectory());
         reportDir.mkdir();
         
         return reportDir;
     }
     
-    private String generateReportDirectoryName()
+    private String getReportDirectory()
     {
-        return REPORT_DIR_PREFIX + System.currentTimeMillis();
+        String tmpDir = PentahoSystem.getApplicationContext().getSolutionPath(PENTAHO_TMP_DIRECTORY);
+        
+        return tmpDir + System.getProperty("file.separator") + getReportDirectoryName(); 
+    }
+    
+    private String generateUniqueDirectoryName(String namePrefix)
+    {
+        return namePrefix + System.currentTimeMillis();
     }
 
     /**
@@ -119,20 +185,6 @@ public class FakeGameAction implements IStreamingAction
      */
     public OutputStream getResponseStream() {
         return responseStream;
-    }
-
-    /**
-     * @param responseMessage the responseMessage to set
-     */
-    public void setResponseMessage(String responseMessage) {
-        this.responseMessage = responseMessage;
-    }
-
-    /**
-     * @return the responseMessage
-     */
-    public String getResponseMessage() {
-        return responseMessage;
     }
 
     /**
@@ -174,22 +226,6 @@ public class FakeGameAction implements IStreamingAction
     }
 
     /**
-     * @param configurationDirectory the configurationDirectory to set
-     */
-    public void setConfigurationDirectory(String configurationDirectory) {
-        fgConfigurations = new Configurations(new File(configurationDirectory));
-        
-        this.configurationDirectory = configurationDirectory;
-    }
-
-    /**
-     * @return the configurationDirectory
-     */
-    public String getConfigurationDirectory() {
-        return configurationDirectory;
-    }
-
-    /**
      * @param data the data to set
      */
     public void setData(IPentahoResultSet data) {
@@ -210,4 +246,38 @@ public class FakeGameAction implements IStreamingAction
         return reportDirectoryName;
     }
 
+    /**
+     * @param configZip Stream with zipped configuration directory.
+     */
+    public void setConfigZip(InputStream configZip) {
+        this.configZip = configZip;
+    }
+
+    /**
+     * @return the configZip
+     */
+    public InputStream getConfigZip() {
+        return configZip;
+    }
+
+    /**
+     * @return the configDirectoryName
+     */
+    private String getConfigDirectoryName() {
+        return configDirectoryName;
+    }
+
+    /**
+     * @param zippedReportStream the zippedReportStream to set
+     */
+    public void setZippedReportStream(OutputStream zippedReportStream) {
+        this.zippedReportStream = zippedReportStream;
+    }
+
+    /**
+     * @return the zippedReportStream
+     */
+    public OutputStream getZippedReportStream() {
+        return zippedReportStream;
+    }
 }

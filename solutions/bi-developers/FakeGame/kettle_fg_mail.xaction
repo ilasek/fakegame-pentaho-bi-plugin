@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<action-sequence> 
+  <title>LoadFromKettleSendByMail</title>
+  <version>1</version>
+  <logging-level>ERROR</logging-level>
+  <documentation> 
+    <author>Ivo Lašek</author>  
+    <description>Loads data using kettle transformation, produces report adn sends it by mail.</description>  
+    <help/>  
+    <result-type/>  
+    <icon/> 
+  </documentation>
+
+  <inputs/>
+
+  <outputs> 
+    <response type="content"> 
+      <destinations> 
+        <response>content</response> 
+      </destinations> 
+    </response> 
+  </outputs>
+
+  <resources> 
+    <transformation-file> 
+      <file> 
+        <location>/home/ivo/Dokumenty/Skola/11semestr/X36PM2/case_study/cars.ktr</location>  
+        <mime-type>text/plain</mime-type> 
+      </file> 
+    </transformation-file>  
+    <configZip>
+      <file>
+        <location>/home/ivo/workspace/tomcat-pci-test/biserver-ce/pentaho-solutions/bi-developers/FakeGame/cfg_quick_linear.zip</location>
+        <mime-type>application/zip</mime-type>
+      </file>
+    </configZip>
+  </resources>
+  
+  <actions> 
+    <action-definition> 
+      <component-name>KettleComponent</component-name>
+      <action-type>Pentaho Data Integration</action-type>
+      <action-resources> 
+        <transformation-file type="resource"/> 
+      </action-resources>
+      <action-outputs> 
+        <transformation-output-rows type="result-set" mapping="car_data"/> 
+      </action-outputs>
+      <component-definition> 
+        <monitor-step><![CDATA[Output]]></monitor-step> 
+      </component-definition> 
+    </action-definition>
+  
+    <action-definition> 
+      <component-name>FakeGameAction</component-name>
+      <action-type>Fake Game</action-type>
+      <action-inputs> 
+        <data type="result-set" mapping="car_data"/> 
+      </action-inputs>
+      <action-resources>
+        <configZip type="resource"/>
+      </action-resources>
+      <action-outputs> 
+        <response type="content"/> 
+      </action-outputs>
+      <component-definition>
+        <trainTestStrategy><![CDATA[whole-set]]></trainTestStrategy>
+      </component-definition> 
+    </action-definition>
+ 
+  </actions> 
+</action-sequence>

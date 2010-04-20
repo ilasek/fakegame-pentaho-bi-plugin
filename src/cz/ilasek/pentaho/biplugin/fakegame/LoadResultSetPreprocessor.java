@@ -13,10 +13,17 @@ import preprocessing.storage.PreprocessingStorage;
 import preprocessing.storage.PreprocessingStorage.DataType;
 import weka.core.FastVector;
 
-public class LoadResultSetPreprocessor extends AbstractBaseLoader {
-    
+public class LoadResultSetPreprocessor extends AbstractBaseLoader 
+{
     private static final long serialVersionUID = 1L;
+
+    private static final char CLASS_MARKER = '!';
+    private static final char TEST_CLASS_MARKER = '_';
+    
+    private static boolean test = false;
+
     private IPentahoResultSet resultSet;
+    
     
     public LoadResultSetPreprocessor(IPentahoResultSet resultSet)
     {
@@ -49,7 +56,21 @@ public class LoadResultSetPreprocessor extends AbstractBaseLoader {
         for (int i = 0; i < headers[0].length; i++)
         {
             String fieldName = headers[0][i].toString();
-            DataType dataType = (firstDataRow[i] instanceof Number) ? DataType.NUMERIC : DataType.MIXED;
+            DataType dataType = DataType.NUMERIC;
+            
+            if (!(firstDataRow[i] instanceof Number))
+            {
+                if (firstDataRow[i] instanceof String) {
+                    try {
+                        new Double((String) firstDataRow[i]);
+                    } catch (NumberFormatException e) {
+                        dataType = DataType.MIXED;
+                    }
+                }
+                else {
+                    dataType = DataType.MIXED;
+                }
+            }
             
             try {
                 if (isClassAttribute(fieldName))
@@ -73,6 +94,8 @@ public class LoadResultSetPreprocessor extends AbstractBaseLoader {
             {
                 if (value instanceof Number)
                     value = ((Number) value).doubleValue();
+                else if (store.getAttributeType(i) == DataType.NUMERIC)
+                    value = new Double(value.toString());
                 else
                     value = value.toString();
                 
@@ -87,7 +110,10 @@ public class LoadResultSetPreprocessor extends AbstractBaseLoader {
      */
     private boolean isClassAttribute(String fieldName)
     {
-        return fieldName.charAt(0)== '!';
+        if (isTest())
+            return fieldName.charAt(0)== TEST_CLASS_MARKER;
+        else
+            return fieldName.charAt(0)== CLASS_MARKER;
     }
     
     /**
@@ -111,5 +137,14 @@ public class LoadResultSetPreprocessor extends AbstractBaseLoader {
     public boolean isApplyOnTestingData() {
         return false;
     }
-
+    
+    public static void setTest(boolean test)
+    {
+        LoadResultSetPreprocessor.test = test;
+    }
+    
+    public static boolean isTest()
+    {
+        return test;
+    }
 }

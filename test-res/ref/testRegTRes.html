@@ -1,0 +1,304 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD><TITLE>Report name</TITLE><link rel='stylesheet' media='screen' type='text/css' href='/pentaho/content/fake-game-static/report-html/screen.css' /></HEAD>
+<BODY>
+<div class='fakereport'>
+<div class='bar' id='bar__top'>
+<div class='bar-left' id='bar__topleft'>
+<a href='http://fakegame.sourceforge.net' class='wikilink2' title='FAKE GAME Project' rel='nofollow'>FAKE GAME Report</a>
+</div>
+</div>
+<H1 id='Table of Contents (1)'>Table of Contents</H1>
+<div class='level1'>
+<OL>
+<LI><A href='#Table of Contents (1)' class='wikilink1'>Table of Contents</A></LI>
+<LI><A href='#Overview (2)' class='wikilink1'>Overview</A></LI>
+<LI><A href='#Operation Flow (3)' class='wikilink1'>Operation Flow</A></LI>
+<LI><A href='#Dataset Visualizations (4)' class='wikilink1'>Dataset Visualizations</A></LI>
+<LI><A href='#Feature Ranking (5)' class='wikilink1'>Feature Ranking</A></LI>
+<LI><A href='#Dataset Projection to 2D (6)' class='wikilink1'>Dataset Projection to 2D</A></LI>
+<LI><A href='#Multiple Model Configurations (7)' class='wikilink1'>Multiple Model Configurations</A></LI>
+<OL>
+<LI><A href='#Training/Testing Sets Strategy: GAME-singlelay (8)' class='wikilink1'>Training/Testing Sets Strategy: GAME-singlelay</A></LI>
+<OL>
+<LI><A href='#Models (9)' class='wikilink1'>Models</A></LI>
+<LI><A href='#Regression Results on train data (10)' class='wikilink1'>Regression Results on train data</A></LI>
+<LI><A href='#Regression Results on test data (11)' class='wikilink1'>Regression Results on test data</A></LI>
+</OL><LI><A href='#Training/Testing Sets Strategy: GAME-increase (12)' class='wikilink1'>Training/Testing Sets Strategy: GAME-increase</A></LI>
+<OL>
+<LI><A href='#Models (13)' class='wikilink1'>Models</A></LI>
+<LI><A href='#Regression Results on train data (14)' class='wikilink1'>Regression Results on train data</A></LI>
+<LI><A href='#Regression Results on test data (15)' class='wikilink1'>Regression Results on test data</A></LI>
+</OL><LI><A href='#Training/Testing Sets Strategy: GAME-inc-unlimit (16)' class='wikilink1'>Training/Testing Sets Strategy: GAME-inc-unlimit</A></LI>
+<OL>
+<LI><A href='#Models (17)' class='wikilink1'>Models</A></LI>
+<LI><A href='#Regression Results on train data (18)' class='wikilink1'>Regression Results on train data</A></LI>
+<LI><A href='#Regression Results on test data (19)' class='wikilink1'>Regression Results on test data</A></LI>
+</OL><LI><A href='#Training/Testing Sets Strategy: Polynomial model with max degree 2 (20)' class='wikilink1'>Training/Testing Sets Strategy: Polynomial model with max degree 2</A></LI>
+<OL>
+<LI><A href='#Models (21)' class='wikilink1'>Models</A></LI>
+<LI><A href='#Regression Results on train data (22)' class='wikilink1'>Regression Results on train data</A></LI>
+<LI><A href='#Regression Results on test data (23)' class='wikilink1'>Regression Results on test data</A></LI>
+</OL><LI><A href='#Training/Testing Sets Strategy: GAME-gmdh (24)' class='wikilink1'>Training/Testing Sets Strategy: GAME-gmdh</A></LI>
+<OL>
+<LI><A href='#Models (25)' class='wikilink1'>Models</A></LI>
+<LI><A href='#Regression Results on train data (26)' class='wikilink1'>Regression Results on train data</A></LI>
+<LI><A href='#Regression Results on test data (27)' class='wikilink1'>Regression Results on test data</A></LI>
+</OL></OL></OL></div>
+<H1 id='Overview (2)'>Overview</H1>
+<div class='level1'>
+<P>
+<TABLE class='inline'>
+<CAPTION>General information</CAPTION>
+<TR><TH>Data file:</TH><TD><STRONG>biresultset</STRONG></TD></TR>
+<TR><TH>Mining type:</TH><TD><STRONG>REGRESSION</STRONG></TD></TR>
+<TR><TH># of input attributes:</TH><TD>11</TD></TR>
+<TR><TH># of output attributes:</TH><TD>1</TD></TR>
+<TR><TH>Instances:</TH><TD>6</TD></TR>
+</TABLE>
+</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Input attributes</CAPTION>
+<TR><TH>Attribute</TH><TH>Type</TH><TH>Min</TH><TH>Max</TH><TH>Mean</TH><TH>Median</TH></TR>
+<TR><TD>Day</TD><TD>NUMERIC</TD><TD>86.0</TD><TD>96.0</TD><TD>91.0</TD><TD>91.0</TD></TR>
+<TR><TD>Time</TD><TD>NUMERIC</TD><TD>300.0</TD><TD>2000.0</TD><TD>1150.0</TD><TD>1150.0</TD></TR>
+<TR><TD>Rs</TD><TD>NUMERIC</TD><TD>-0.0644</TD><TD>-0.01612</TD><TD>-0.04026</TD><TD>-0.04026</TD></TR>
+<TR><TD>Rn</TD><TD>NUMERIC</TD><TD>-60.302</TD><TD>-18.136</TD><TD>-39.219</TD><TD>-39.219</TD></TR>
+<TR><TD>PAR</TD><TD>NUMERIC</TD><TD>-1.2366</TD><TD>-0.88235</TD><TD>-1.0594749999999997</TD><TD>-1.059475</TD></TR>
+<TR><TD>Tair</TD><TD>NUMERIC</TD><TD>9.5627</TD><TD>14.555</TD><TD>12.05885</TD><TD>12.05885</TD></TR>
+<TR><TD>RH</TD><TD>NUMERIC</TD><TD>77.296</TD><TD>99.53</TD><TD>88.413</TD><TD>88.41300000000001</TD></TR>
+<TR><TD>u</TD><TD>NUMERIC</TD><TD>0.09975</TD><TD>0.33879</TD><TD>0.21926999999999996</TD><TD>0.21927</TD></TR>
+<TR><TD>SatVapPr</TD><TD>NUMERIC</TD><TD>1.1916</TD><TD>1.6561</TD><TD>1.42385</TD><TD>1.4238499999999998</TD></TR>
+<TR><TD>VapPress</TD><TD>NUMERIC</TD><TD>1.186</TD><TD>1.2799</TD><TD>1.2329499999999998</TD><TD>1.23295</TD></TR>
+<TR><TD>Battery</TD><TD>NUMERIC</TD><TD>12.522</TD><TD>12.54</TD><TD>12.531</TD><TD>12.530999999999999</TD></TR>
+</TABLE>
+</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Output attributes</CAPTION>
+<TR><TH>Attribute</TH><TH>Type</TH><TH>Min</TH><TH>Max</TH><TH>Mean</TH><TH>Median</TH></TR>
+<TR><TD>water</TD><TD>NUMERIC</TD><TD>0.1145</TD><TD>0.91</TD><TD>0.51225</TD><TD>0.51225</TD></TR>
+</TABLE>
+</P>
+</div>
+<H1 id='Operation Flow (3)'>Operation Flow</H1>
+<div class='level1'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Operation flow</CAPTION>
+<TR><TH>Operation</TH><TH>Time</TH><TH>Description</TH></TR>
+<TR><TD>Register subreports</TD><TD>00:00:00:000</TD><TD>Registers and defines order of subreports.</TD></TR>
+<TR><TD>ImportPentahoBI</TD><TD>00:00:00:002</TD><TD>Is able to import the result-set from another action in Pentaho BI action sequence</TD></TR>
+<TR><TD>Prepare reports</TD><TD>00:00:00:000</TD><TD>Prepares a report directory.</TD></TR>
+<TR><TD>Basic Preprocessing</TD><TD>00:00:00:000</TD><TD>Performs missing values imputations, ...</TD></TR>
+<TR><TD>Data reduction</TD><TD>00:00:00:000</TD><TD>Reduces the number of instances, if the dataset is too large.</TD></TR>
+<TR><TD>Feature ranking</TD><TD>00:00:00:158</TD><TD>Feature ranking of dataset attributes</TD></TR>
+<TR><TD>Visualizes dataset</TD><TD>00:00:01:132</TD><TD>Visualizes dataset using histograms, parallel plots, Andrew's curves, etc.</TD></TR>
+<TR><TD>Project dataset to 2D</TD><TD>00:00:00:000</TD><TD>Projects dataset to 2D using Sammon's or Drchal's projection.</TD></TR>
+<TR><TD>Multiple model iterator</TD><TD>00:00:03:999</TD><TD>If more than one classifier/model config is given, this iterates over all of them.</TD></TR>
+<TR><TD>Operation Flow Info</TD><TD>00:00:00:000</TD><TD>Constructs this subreport.</TD></TR>
+<TR><TD><STRONG>Total</STRONG></TD><TD><STRONG>00:00:05:291</STRONG></TD><TD><STRONG>Total time spent.</STRONG></TD></TR>
+</TABLE>
+</P>
+</div>
+<H1 id='Dataset Visualizations (4)'>Dataset Visualizations</H1>
+<div class='level1'>
+<P>Only 10 most important features selected.</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Finput_hist_Day_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Finput_hist_Time_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Finput_hist_Rs_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Finput_hist_Rn_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Finput_hist_PAR_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Finput_hist_Tair_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Finput_hist_RH_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Finput_hist_u_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Finput_hist_VapPress_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Finput_hist_Battery_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Foutput_hist_water_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Fparallel.png'/><DIV>Parallel plot </DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Fandrew.png'/><DIV>Andrew's curves</DIV></DIV></P>
+</div>
+<H1 id='Feature Ranking (5)'>Feature Ranking</H1>
+<div class='level1'>
+<P>Note: the number of attributes in graphs may be reduced to fit.</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>XyMI (Compute ranks as a sorted order of sums of MI between specific attribute and  the rest attributes. )</CAPTION>
+<TR><TH>Rank</TH><TH>1</TH><TH>2</TH><TH>3</TH><TH>4</TH><TH>5</TH><TH>6</TH><TH>7</TH><TH>8</TH><TH>9</TH><TH>10</TH><TH>11</TH></TR>
+<TR><TH>Attribute</TH><TD>Day</TD><TD>VapPress</TD><TD>Battery</TD><TD>Time</TD><TD>Rs</TD><TD>Rn</TD><TD>PAR</TD><TD>Tair</TD><TD>RH</TD><TD>u</TD><TD>SatVapPr</TD></TR>
+<TR><TH>Importance</TH><TD>155.0977500432693</TD><TD>155.0977500432693</TD><TD>139.58797503894235</TD><TD>124.07820003461542</TD><TD>108.5684250302885</TD><TD>93.05865002596157</TD><TD>77.54887502163464</TD><TD>62.03910001730772</TD><TD>46.52932501298079</TD><TD>31.01955000865386</TD><TD>15.50977500432693</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Ffr_0_XyMI.png'/><DIV></DIV></DIV></P>
+</div>
+<H1 id='Dataset Projection to 2D (6)'>Dataset Projection to 2D</H1>
+<div class='level1'>
+</div>
+<H1 id='Multiple Model Configurations (7)'>Multiple Model Configurations</H1>
+<div class='level1'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Model overview</CAPTION>
+<TR><TH>Model configuration</TH><TH>RMSE on TEST set</TH></TR>
+<TR><TD>GAME-singlelay</TD><TD>0.013607448287463395</TD></TR>
+<TR><TD>GAME-increase</TD><TD>0.2893671880866846</TD></TR>
+<TR><TD>GAME-inc-unlimit</TD><TD>0.001794093415710546</TD></TR>
+<TR><TD><STRONG>Polynomial model with max degree 2</STRONG></TD><TD><STRONG>0.0</STRONG></TD></TR>
+<TR><TD>GAME-gmdh</TD><TD>0.0013762321319435162</TD></TR>
+</TABLE>
+</P>
+<H2 id='Training/Testing Sets Strategy: GAME-singlelay (8)'>Training/Testing Sets Strategy: GAME-singlelay</H2>
+<div class='level2'>
+<H3 id='Models (9)'>Models</H3>
+<div class='level3'>
+<P>water = -0.310* (Time-300.0)/1700.0 -0.050* (Rn--60.302)/60.302 +0.102* (RH-77.296)/22.233999999999995 -0.203* (SatVapPr-1.1916)/0.4644999999999999 +0.401* (Battery-12.522)/0.017999999999998906 +0.531</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Fregression2D_GAME-singlelay.png'/><DIV>Behaviour of model:regression2D_GAME-singlelay.png</DIV></DIV></P>
+</div>
+<H3 id='Regression Results on train data (10)'>Regression Results on train data</H3>
+<div class='level3'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.006803724143731697</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.006803724143731697</TD></TR>
+</TABLE>
+</P>
+</div>
+<H3 id='Regression Results on test data (11)'>Regression Results on test data</H3>
+<div class='level3'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.013607448287463395</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.013607448287463395</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H2 id='Training/Testing Sets Strategy: GAME-increase (12)'>Training/Testing Sets Strategy: GAME-increase</H2>
+<div class='level2'>
+<H3 id='Models (13)'>Models</H3>
+<div class='level3'>
+<P>water = -0.306* (Tair-9.5627)/4.9923 +0.329* (Battery-12.522)/0.017999999999998906 +0.306</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Fregression2D_GAME-increase.png'/><DIV>Behaviour of model:regression2D_GAME-increase.png</DIV></DIV></P>
+</div>
+<H3 id='Regression Results on train data (14)'>Regression Results on train data</H3>
+<div class='level3'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.1446835940433423</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.1446835940433423</TD></TR>
+</TABLE>
+</P>
+</div>
+<H3 id='Regression Results on test data (15)'>Regression Results on test data</H3>
+<div class='level3'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.2893671880866846</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.2893671880866846</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H2 id='Training/Testing Sets Strategy: GAME-inc-unlimit (16)'>Training/Testing Sets Strategy: GAME-inc-unlimit</H2>
+<div class='level2'>
+<H3 id='Models (17)'>Models</H3>
+<div class='level3'>
+<P>water = 0.611* (RH-77.296)/22.233999999999995 -0.115* (SatVapPr-1.1916)/0.4644999999999999 -0.013* (VapPress-1.186)/0.0939000000000001 +0.261* (Battery-12.522)/0.017999999999998906 +0.126</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Fregression2D_GAME-inc-unlimit.png'/><DIV>Behaviour of model:regression2D_GAME-inc-unlimit.png</DIV></DIV></P>
+</div>
+<H3 id='Regression Results on train data (18)'>Regression Results on train data</H3>
+<div class='level3'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>8.97046707855273E-4</TD></TR>
+<TR><TD>OVERALL</TD><TD>8.97046707855273E-4</TD></TR>
+</TABLE>
+</P>
+</div>
+<H3 id='Regression Results on test data (19)'>Regression Results on test data</H3>
+<div class='level3'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.001794093415710546</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.001794093415710546</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H2 id='Training/Testing Sets Strategy: Polynomial model with max degree 2 (20)'>Training/Testing Sets Strategy: Polynomial model with max degree 2</H2>
+<div class='level2'>
+<H3 id='Models (21)'>Models</H3>
+<div class='level3'>
+<P>water = -0.162* (Day-86.0)/10.0 -0.099* (Time-300.0)/1700.0 +0.243* (Rs--0.0644)/0.0644 +0.339* (Rn--60.302)/60.302 -0.040* (PAR--1.2366)/1.2366 +0.245* (Tair-9.5627)/4.9923 -0.117* (RH-77.296)/22.233999999999995 +0.155* (u-0.09975)/0.23903999999999997 -0.280* (SatVapPr-1.1916)/0.4644999999999999 +0.187* (VapPress-1.186)/0.0939000000000001 -0.109* (Battery-12.522)/0.017999999999998906 -0.231* power((Day-86.0)/10.0;2)-0.298* power((Time-300.0)/1700.0;2)+0.378* power((Rs--0.0644)/0.0644;2)-0.015* power((Rn--60.302)/60.302;2)-0.101* power((PAR--1.2366)/1.2366;2)+0.233* power((Tair-9.5627)/4.9923;2)-0.072* power((RH-77.296)/22.233999999999995;2)+0.136* power((u-0.09975)/0.23903999999999997;2)+0.239* power((SatVapPr-1.1916)/0.4644999999999999;2)-0.376* power((VapPress-1.186)/0.0939000000000001;2)+0.404* power((Battery-12.522)/0.017999999999998906;2)+0.271</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Fregression2D_Polynomial+model+with+max+degree+2.png'/><DIV>Behaviour of model:regression2D_Polynomial model with max degree 2.png</DIV></DIV></P>
+</div>
+<H3 id='Regression Results on train data (22)'>Regression Results on train data</H3>
+<div class='level3'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+<H3 id='Regression Results on test data (23)'>Regression Results on test data</H3>
+<div class='level3'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H2 id='Training/Testing Sets Strategy: GAME-gmdh (24)'>Training/Testing Sets Strategy: GAME-gmdh</H2>
+<div class='level2'>
+<H3 id='Models (25)'>Models</H3>
+<div class='level3'>
+<P>water = 0.361* (Rn--60.302)/60.302 +0.589* (RH-77.296)/22.233999999999995 -0.159* (SatVapPr-1.1916)/0.4644999999999999 +0.157</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793192300%2Fregression2D_GAME-gmdh.png'/><DIV>Behaviour of model:regression2D_GAME-gmdh.png</DIV></DIV></P>
+</div>
+<H3 id='Regression Results on train data (26)'>Regression Results on train data</H3>
+<div class='level3'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0013762321319435162</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0013762321319435162</TD></TR>
+</TABLE>
+</P>
+</div>
+<H3 id='Regression Results on test data (27)'>Regression Results on test data</H3>
+<div class='level3'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0013762321319435162</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0013762321319435162</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+</div>
+</div>
+</BODY>
+</HTML>

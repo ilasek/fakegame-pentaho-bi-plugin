@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <action-sequence> 
-  <title>FakeGame</title>
+  <title>EmailReport</title>
   <version>1</version>
   <logging-level>DEBUG</logging-level>
   <documentation> 
@@ -28,17 +28,17 @@
       <sources> 
         <request>trainTestStrategy</request> 
       </sources>  
-      <default-value><![CDATA[whole-set]]></default-value> 
-    </trainTestStrategy> 
+      <default-value><![CDATA[train-test]]></default-value> 
+    </trainTestStrategy>  
+    <email type="string"> 
+      <sources> 
+        <request>email</request> 
+      </sources>  
+      <default-value/> 
+    </email> 
   </inputs>
 
-  <outputs> 
-    <response type="content">
-      <destinations>
-        <response>content</response>
-      </destinations>
-    </response>
-  </outputs>
+  <outputs/>
 
   <resources> 
     <transformation-file> 
@@ -82,13 +82,48 @@
         <configZip type="resource"/> 
       </action-resources>
       <action-outputs> 
-        <zippedReport type="content"/>  
-        <response type="content"/> 
+        <zippedReport type="content"/> 
       </action-outputs>
       <component-definition/>  
       <action-name>Test the sample Echo component</action-name>  
       <logging-level>DEBUG</logging-level> 
     </action-definition>
+  
+    <actions> 
+      <condition><![CDATA[zippedReport]]></condition>  
+      <action-definition> 
+        <component-name>SecureFilterComponent</component-name>
+        <action-type>Set e-mail</action-type>
+        <action-inputs> 
+          <email type="string"/> 
+        </action-inputs>
+        <component-definition> 
+          <selections> 
+            <email filter="none"> 
+              <title>Zadejte e-mail, kam chcete report odeslat.</title> 
+            </email> 
+          </selections> 
+        </component-definition> 
+      </action-definition>
+  
+      <action-definition> 
+        <component-name>EmailComponent</component-name>
+        <action-type>E-Mail report</action-type>
+        <action-inputs> 
+          <to type="string" mapping="email"/>  
+          <zippedReport type="content"/>
+        </action-inputs>
+        <action-resources/>
+        <component-definition> 
+          <subject><![CDATA[Report Pantaho vs FakeGame]]></subject>  
+          <message-plain><![CDATA[Zasilam report v priloze]]></message-plain>  
+          <attachment-ref name-param="attach_name_1" input-param="zippedReport"/>
+          <attach_name_1><![CDATA[report.zip]]></attach_name_1>
+          <from><![CDATA[ivo_lasek@centrum.cz]]></from>
+        </component-definition> 
+      </action-definition>
+ 
+    </actions>
  
   </actions> 
 </action-sequence>

@@ -1,5 +1,7 @@
 package cz.ilasek.pentaho.biplugin.fakegame;
 
+import java.io.File;
+
 import org.pentaho.commons.connection.IPentahoResultSet;
 
 import cz.ilasek.pentaho.biplugin.fakegame.report.PentahoBIReportRenderer;
@@ -15,6 +17,7 @@ import fakegame.flow.operations.IDatasetStrategy;
 import fakegame.flow.operations.IEvaluator;
 import fakegame.flow.operations.IHierarchic;
 import fakegame.flow.operations.IModel;
+import fakegame.flow.operations.ImportFile;
 import fakegame.flow.operations.ModelConfigIterator;
 import fakegame.flow.operations.OperationFactory;
 import fakegame.flow.operations.OperationFlow;
@@ -27,10 +30,14 @@ import fakegame.flow.operations.VisualizeDataset;
 import fakegame.flow.operations.WholeDatasetStrategy;
 import fakegame.flow.profiles.DMBatchProfile.Strategy;
 import fakegame.flow.utils.DatasetOverview;
+import game.report.HTMLReportRenderer;
 import game.report.ReportManager;
+import game.report.ReportRenderer;
 
 public class DMPentahoBIProfile {
 
+    private static final String HTML_REPORT_NAME = "report.html";
+    
     private final Configurations configurations;
     private final Strategy strategy;
     private final boolean series;
@@ -123,6 +130,11 @@ public class DMPentahoBIProfile {
 
         operationFlow.appendOperation(new OperationFlowInfo(operationFlow));
         operationFlow.run(blackboard);
+        
+        ReportRenderer renderer = new HTMLReportRenderer(
+                (File) blackboard.current().value(PrepareReports.PR_REPORT_FILE),
+                HTML_REPORT_NAME);
+        renderer.render();        
     }
     
     public StringBuffer getPentahoBIHTMLReport(String reportImagesDir)
