@@ -1,0 +1,602 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD><TITLE>Report name</TITLE><link rel='stylesheet' media='screen' type='text/css' href='/pentaho/content/fake-game-static/report-html/screen.css' /></HEAD>
+<BODY>
+<div class='fakereport'>
+<div class='bar' id='bar__top'>
+<div class='bar-left' id='bar__topleft'>
+<a href='http://fakegame.sourceforge.net' class='wikilink2' title='FAKE GAME Project' rel='nofollow'>FAKE GAME Report</a>
+</div>
+</div>
+<H1 id='Table of Contents (1)'>Table of Contents</H1>
+<div class='level1'>
+<OL>
+<LI><A href='#Table of Contents (1)' class='wikilink1'>Table of Contents</A></LI>
+<LI><A href='#Overview (2)' class='wikilink1'>Overview</A></LI>
+<LI><A href='#Operation Flow (3)' class='wikilink1'>Operation Flow</A></LI>
+<LI><A href='#Dataset Visualizations (4)' class='wikilink1'>Dataset Visualizations</A></LI>
+<LI><A href='#Feature Ranking (5)' class='wikilink1'>Feature Ranking</A></LI>
+<LI><A href='#Dataset Projection to 2D (6)' class='wikilink1'>Dataset Projection to 2D</A></LI>
+<LI><A href='#Crossvalidation Strategy: null (7)' class='wikilink1'>Crossvalidation Strategy: null</A></LI>
+<OL>
+<LI><A href='#Fold 1 (8)' class='wikilink1'>Fold 1</A></LI>
+<OL>
+<LI><A href='#Classifier (9)' class='wikilink1'>Classifier</A></LI>
+<LI><A href='#Classification Results on train data (10)' class='wikilink1'>Classification Results on train data</A></LI>
+<LI><A href='#Classification Results on test data (11)' class='wikilink1'>Classification Results on test data</A></LI>
+</OL><LI><A href='#Fold 2 (12)' class='wikilink1'>Fold 2</A></LI>
+<OL>
+<LI><A href='#Classifier (13)' class='wikilink1'>Classifier</A></LI>
+<LI><A href='#Classification Results on train data (14)' class='wikilink1'>Classification Results on train data</A></LI>
+<LI><A href='#Classification Results on test data (15)' class='wikilink1'>Classification Results on test data</A></LI>
+</OL><LI><A href='#Fold 3 (16)' class='wikilink1'>Fold 3</A></LI>
+<OL>
+<LI><A href='#Classifier (17)' class='wikilink1'>Classifier</A></LI>
+<LI><A href='#Classification Results on train data (18)' class='wikilink1'>Classification Results on train data</A></LI>
+<LI><A href='#Classification Results on test data (19)' class='wikilink1'>Classification Results on test data</A></LI>
+</OL><LI><A href='#Fold 4 (20)' class='wikilink1'>Fold 4</A></LI>
+<OL>
+<LI><A href='#Classifier (21)' class='wikilink1'>Classifier</A></LI>
+<LI><A href='#Classification Results on train data (22)' class='wikilink1'>Classification Results on train data</A></LI>
+<LI><A href='#Classification Results on test data (23)' class='wikilink1'>Classification Results on test data</A></LI>
+</OL><LI><A href='#Fold 5 (24)' class='wikilink1'>Fold 5</A></LI>
+<OL>
+<LI><A href='#Classifier (25)' class='wikilink1'>Classifier</A></LI>
+<LI><A href='#Classification Results on train data (26)' class='wikilink1'>Classification Results on train data</A></LI>
+<LI><A href='#Classification Results on test data (27)' class='wikilink1'>Classification Results on test data</A></LI>
+</OL><LI><A href='#Fold 6 (28)' class='wikilink1'>Fold 6</A></LI>
+<OL>
+<LI><A href='#Classifier (29)' class='wikilink1'>Classifier</A></LI>
+<LI><A href='#Classification Results on train data (30)' class='wikilink1'>Classification Results on train data</A></LI>
+<LI><A href='#Classification Results on test data (31)' class='wikilink1'>Classification Results on test data</A></LI>
+</OL><LI><A href='#Fold 7 (32)' class='wikilink1'>Fold 7</A></LI>
+<OL>
+<LI><A href='#Classifier (33)' class='wikilink1'>Classifier</A></LI>
+<LI><A href='#Classification Results on train data (34)' class='wikilink1'>Classification Results on train data</A></LI>
+<LI><A href='#Classification Results on test data (35)' class='wikilink1'>Classification Results on test data</A></LI>
+</OL><LI><A href='#Fold 8 (36)' class='wikilink1'>Fold 8</A></LI>
+<OL>
+<LI><A href='#Classifier (37)' class='wikilink1'>Classifier</A></LI>
+<LI><A href='#Classification Results on train data (38)' class='wikilink1'>Classification Results on train data</A></LI>
+<LI><A href='#Classification Results on test data (39)' class='wikilink1'>Classification Results on test data</A></LI>
+</OL><LI><A href='#Fold 9 (40)' class='wikilink1'>Fold 9</A></LI>
+<OL>
+<LI><A href='#Classifier (41)' class='wikilink1'>Classifier</A></LI>
+<LI><A href='#Classification Results on train data (42)' class='wikilink1'>Classification Results on train data</A></LI>
+<LI><A href='#Classification Results on test data (43)' class='wikilink1'>Classification Results on test data</A></LI>
+</OL><LI><A href='#Fold 10 (44)' class='wikilink1'>Fold 10</A></LI>
+<OL>
+<LI><A href='#Classifier (45)' class='wikilink1'>Classifier</A></LI>
+<LI><A href='#Classification Results on train data (46)' class='wikilink1'>Classification Results on train data</A></LI>
+<LI><A href='#Classification Results on test data (47)' class='wikilink1'>Classification Results on test data</A></LI>
+</OL></OL></OL></div>
+<H1 id='Overview (2)'>Overview</H1>
+<div class='level1'>
+<P>
+<TABLE class='inline'>
+<CAPTION>General information</CAPTION>
+<TR><TH>Data file:</TH><TD><STRONG>biresultset</STRONG></TD></TR>
+<TR><TH>Mining type:</TH><TD><STRONG>CLASSIFICATION</STRONG></TD></TR>
+<TR><TH># of input attributes:</TH><TD>4</TD></TR>
+<TR><TH># of classes:</TH><TD>3</TD></TR>
+<TR><TH>Instances:</TH><TD>36</TD></TR>
+</TABLE>
+</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Input attributes</CAPTION>
+<TR><TH>Attribute</TH><TH>Type</TH><TH>Min</TH><TH>Max</TH><TH>Mean</TH><TH>Median</TH></TR>
+<TR><TD>sepal_length</TD><TD>NUMERIC</TD><TD>5.1</TD><TD>6.2</TD><TD>5.733333333333331</TD><TD>5.9</TD></TR>
+<TR><TD>sepal_width</TD><TD>NUMERIC</TD><TD>2.9</TD><TD>3.5</TD><TD>3.133333333333333</TD><TD>3.0</TD></TR>
+<TR><TD>pteal_length</TD><TD>NUMERIC</TD><TD>1.4</TD><TD>5.1</TD><TD>3.5999999999999974</TD><TD>4.3</TD></TR>
+<TR><TD>petal_width</TD><TD>NUMERIC</TD><TD>0.2</TD><TD>1.8</TD><TD>1.0999999999999999</TD><TD>1.3</TD></TR>
+</TABLE>
+</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Class distribution</CAPTION>
+<TR><TH>Class</TH><TH>Instances</TH><TH>%</TH></TR>
+<TR><TD>Iris-setosa</TD><TD>12</TD><TD>33.333333333333336</TD></TR>
+<TR><TD>Iris-versicolor</TD><TD>12</TD><TD>33.333333333333336</TD></TR>
+<TR><TD>Iris-virginica</TD><TD>12</TD><TD>33.333333333333336</TD></TR>
+<TR><TD><STRONG>Total</STRONG></TD><TD><STRONG>36</STRONG></TD><TD><STRONG>100</STRONG></TD></TR>
+</TABLE>
+</P>
+</div>
+<H1 id='Operation Flow (3)'>Operation Flow</H1>
+<div class='level1'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Operation flow</CAPTION>
+<TR><TH>Operation</TH><TH>Time</TH><TH>Description</TH></TR>
+<TR><TD>Register subreports</TD><TD>00:00:00:000</TD><TD>Registers and defines order of subreports.</TD></TR>
+<TR><TD>ImportPentahoBI</TD><TD>00:00:00:003</TD><TD>Is able to import the result-set from another action in Pentaho BI action sequence</TD></TR>
+<TR><TD>Prepare reports</TD><TD>00:00:00:000</TD><TD>Prepares a report directory.</TD></TR>
+<TR><TD>Basic Preprocessing</TD><TD>00:00:00:000</TD><TD>Performs missing values imputations, ...</TD></TR>
+<TR><TD>Data reduction</TD><TD>00:00:00:000</TD><TD>Reduces the number of instances, if the dataset is too large.</TD></TR>
+<TR><TD>Feature ranking</TD><TD>00:00:00:262</TD><TD>Feature ranking of dataset attributes</TD></TR>
+<TR><TD>Visualizes dataset</TD><TD>00:00:01:101</TD><TD>Visualizes dataset using histograms, parallel plots, Andrew's curves, etc.</TD></TR>
+<TR><TD>Project dataset to 2D</TD><TD>00:00:00:001</TD><TD>Projects dataset to 2D using Sammon's or Drchal's projection.</TD></TR>
+<TR><TD>Crossvalidation Strategy</TD><TD>00:00:05:854</TD><TD>Performs k-th fold crossvalidation</TD></TR>
+<TR><TD>Operation Flow Info</TD><TD>00:00:00:000</TD><TD>Constructs this subreport.</TD></TR>
+<TR><TD><STRONG>Total</STRONG></TD><TD><STRONG>00:00:07:221</STRONG></TD><TD><STRONG>Total time spent.</STRONG></TD></TR>
+</TABLE>
+</P>
+</div>
+<H1 id='Dataset Visualizations (4)'>Dataset Visualizations</H1>
+<div class='level1'>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Finput_hist_sepal_length_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Finput_hist_sepal_width_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Finput_hist_pteal_length_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Finput_hist_petal_width_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Fparallel.png'/><DIV>Parallel plot </DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Fandrew.png'/><DIV>Andrew's curves</DIV></DIV></P>
+</div>
+<H1 id='Feature Ranking (5)'>Feature Ranking</H1>
+<div class='level1'>
+<P>Note: the number of attributes in graphs may be reduced to fit.</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>SimpleMIMethod</CAPTION>
+<TR><TH>Rank</TH><TH>1</TH><TH>2</TH><TH>3</TH><TH>4</TH></TR>
+<TR><TH>Attribute</TH><TD>sepal_length</TD><TD>sepal_width</TD><TD>pteal_length</TD><TD>petal_width</TD></TR>
+<TR><TH>Importance</TH><TD>0.5032583347756456</TD><TD>0.2736843762620233</TD><TD>0.21186319600694953</TD><TD>0.21186319600694953</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Ffr_0_SimpleMIMethod.png'/><DIV></DIV></DIV></P>
+<P>
+<TABLE class='inline'>
+<CAPTION>MIFS-Method (Create feature subset by using MIFS method.)</CAPTION>
+<TR><TH>Rank</TH><TH>1</TH><TH>2</TH><TH>3</TH><TH>4</TH></TR>
+<TR><TH>Attribute</TH><TD>sepal_length</TD><TD>sepal_width</TD><TD>pteal_length</TD><TD>petal_width</TD></TR>
+</TABLE>
+</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>MIFS-U-Method (Create feature subset by using MIFS method.)</CAPTION>
+<TR><TH>Rank</TH><TH>1</TH><TH>2</TH><TH>3</TH><TH>4</TH></TR>
+<TR><TH>Attribute</TH><TD>sepal_length</TD><TD>sepal_width</TD><TD>pteal_length</TD><TD>petal_width</TD></TR>
+</TABLE>
+</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>AMIFS-Method (Create feature subset by using AMIFS method.)</CAPTION>
+<TR><TH>Rank</TH><TH>1</TH><TH>2</TH><TH>3</TH><TH>4</TH></TR>
+<TR><TH>Attribute</TH><TD>sepal_length</TD><TD>sepal_width</TD><TD>pteal_length</TD><TD>petal_width</TD></TR>
+</TABLE>
+</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>XyMI (Compute ranks as a sorted order of sums of MI between specific attribute and  the rest attributes. )</CAPTION>
+<TR><TH>Rank</TH><TH>1</TH><TH>2</TH><TH>3</TH><TH>4</TH></TR>
+<TR><TH>Attribute</TH><TD>pteal_length</TD><TD>petal_width</TD><TD>sepal_length</TD><TD>sepal_width</TD></TR>
+<TR><TH>Importance</TH><TD>73.82005419767646</TD><TD>62.28956114091898</TD><TD>41.01620974169352</TD><TD>33.35940001153849</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Ffr_4_XyMI.png'/><DIV></DIV></DIV></P>
+</div>
+<H1 id='Dataset Projection to 2D (6)'>Dataset Projection to 2D</H1>
+<div class='level1'>
+</div>
+<H1 id='Crossvalidation Strategy: null (7)'>Crossvalidation Strategy: null</H1>
+<div class='level1'>
+<H3>Crossvalidation: Classification Results on train data</H3>
+<P>10-th fold crossvalidation.</P>
+<P>Class Assignment Accuracy: 51.11111111111112% (13.8/27.0 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Averaged Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>6.8</TD><TD>1.9</TD><TD>2.1</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>1.6</TD><TD>3.0</TD><TD>3.5</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>1.6</TD><TD>2.5</TD><TD>4.0</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_null_train_.png'/><DIV></DIV></DIV></P>
+<H3>Crossvalidation: Classification Results on test data</H3>
+<P>10-th fold crossvalidation.</P>
+<P>Class Assignment Accuracy: 50.0% (1.5/3.0 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Averaged Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>0.4</TD><TD>0.5</TD><TD>0.3</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0.2</TD><TD>0.6</TD><TD>0.1</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0.2</TD><TD>0.2</TD><TD>0.5</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_null_test_.png'/><DIV></DIV></DIV></P>
+<H2 id='Fold 1 (8)'>Fold 1</H2>
+<div class='level2'>
+<H3 id='Classifier (9)'>Classifier</H3>
+<div class='level3'>
+<P><BR/>
+Iris-setosa=-26.0* sepal_length -16.0* sepal_width +3.0* pteal_length -2.0* petal_width +4.0* power(sepal_length;2)-2.0* power(sepal_width;2)+3.0* power(pteal_length;2)-4.0* power(petal_width;2)-1.5* power(sepal_length;3)+1.0* power(sepal_width;3)+1.0* power(pteal_length;3)-0.75* power(petal_width;3)+19.5;<BR/>
+Iris-versicolor=2.156* sepal_length +0.25* sepal_width -1.312* pteal_length +1.0* petal_width +0.406* power(sepal_length;2)+0.75* power(sepal_width;2)-2.125* power(pteal_length;2)+0.75* power(petal_width;2)+0.375* power(sepal_length;3)-0.125* power(sepal_width;3)-0.281* power(pteal_length;3)+2.156* power(petal_width;3)-1.125;<BR/>
+Iris-virginica=-0.389* sepal_length +0.131* sepal_width +0.327* pteal_length +0.408* petal_width -0.259* power(sepal_length;2)-0.070* power(sepal_width;2)+0.046* power(pteal_length;2)+0.350* power(petal_width;2)-0.016* power(sepal_length;3)+0.183* power(sepal_width;3)+0.066* power(pteal_length;3)+0.451* power(petal_width;3)-0.245;</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2FClassifier2Dplot_fold+1.png'/><DIV>Behaviour of classifier:Classifier2Dplot_fold 1.png</DIV></DIV></P>
+</div>
+<H3 id='Classification Results on train data (10)'>Classification Results on train data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 70.37037037037037% (19/27 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>11</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>8</TD><TD>0</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>8</TD><TD>0</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+1_train_.png'/><DIV></DIV></DIV></P>
+</div>
+<H3 id='Classification Results on test data (11)'>Classification Results on test data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 66.66666666666666% (2/3 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>1</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>1</TD><TD>0</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>1</TD><TD>0</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+1_test_.png'/><DIV></DIV></DIV></P>
+</div>
+</div>
+<H2 id='Fold 2 (12)'>Fold 2</H2>
+<div class='level2'>
+<H3 id='Classifier (13)'>Classifier</H3>
+<div class='level3'>
+<P><BR/>
+Iris-setosa=-6.5* sepal_length -2.0* sepal_width -3.5* pteal_length +3.0* petal_width -1.5* power(sepal_length;2)+1.0* power(sepal_width;2)-2.0* power(pteal_length;2)-0.875* power(petal_width;2)+2.0* power(sepal_length;3)+0.75* power(sepal_width;3)+2.0* power(pteal_length;3)+2.0* power(petal_width;3)+3.5;<BR/>
+Iris-versicolor=-0.625* sepal_length +0.406* sepal_width +1.937* pteal_length -0.718* petal_width +0.437* power(sepal_length;2)+0.140* power(sepal_width;2)+0.687* power(pteal_length;2)-0.25* power(petal_width;2)-0.25* power(sepal_length;3)-0.187* power(sepal_width;3)+0.125* power(pteal_length;3)-0.625* power(petal_width;3)+0.289;<BR/>
+Iris-virginica=-0.492* sepal_length +0.254* sepal_width +0.264* pteal_length +0.302* petal_width +0.060* power(sepal_length;2)-0.147* power(sepal_width;2)+0.424* power(pteal_length;2)+0.193* power(petal_width;2)-0.527* power(sepal_length;3)-0.255* power(sepal_width;3)-0.052* power(pteal_length;3)+0.210* power(petal_width;3)+0.148;</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2FClassifier2Dplot_fold+2.png'/><DIV>Behaviour of classifier:Classifier2Dplot_fold 2.png</DIV></DIV></P>
+</div>
+<H3 id='Classification Results on train data (14)'>Classification Results on train data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 66.66666666666666% (18/27 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>11</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>7</TD><TD>0</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>9</TD><TD>0</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+2_train_.png'/><DIV></DIV></DIV></P>
+</div>
+<H3 id='Classification Results on test data (15)'>Classification Results on test data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 100.0% (3/3 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>1</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>2</TD><TD>0</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>0</TD><TD>0</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+2_test_.png'/><DIV></DIV></DIV></P>
+</div>
+</div>
+<H2 id='Fold 3 (16)'>Fold 3</H2>
+<div class='level2'>
+<H3 id='Classifier (17)'>Classifier</H3>
+<div class='level3'>
+<P><BR/>
+Iris-setosa=-24.0* sepal_length -36.0* sepal_width -4.0* pteal_length +4.0* petal_width +0.0* power(sepal_length;2)+1.0* power(sepal_width;2)-6.0* power(pteal_length;2)-4.0* power(petal_width;2)+0.0* power(sepal_length;3)-0.125* power(sepal_width;3)+1.0* power(pteal_length;3)+2.0* power(petal_width;3)+32.0;<BR/>
+Iris-versicolor=-3.25* sepal_length -4.5* sepal_width +1.75* pteal_length -2.0* petal_width -0.289* power(sepal_length;2)+1.121* power(sepal_width;2)+1.5* power(pteal_length;2)-1.875* power(petal_width;2)+0.687* power(sepal_length;3)-0.5* power(sepal_width;3)-1.5* power(pteal_length;3)+0.75* power(petal_width;3)+4.75;<BR/>
+Iris-virginica=6.390* sepal_length +0.0* sepal_width -1.25* pteal_length -0.5* petal_width -2.375* power(sepal_length;2)+1.0* power(sepal_width;2)+0.5* power(pteal_length;2)+0.75* power(petal_width;2)+0.093* power(sepal_length;3)+0.0* power(sepal_width;3)-0.25* power(pteal_length;3)+2.0* power(petal_width;3)-2.0;</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2FClassifier2Dplot_fold+3.png'/><DIV>Behaviour of classifier:Classifier2Dplot_fold 3.png</DIV></DIV></P>
+</div>
+<H3 id='Classification Results on train data (18)'>Classification Results on train data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 33.33333333333333% (9/27 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>0</TD><TD>9</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>9</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>0</TD><TD>9</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+3_train_.png'/><DIV></DIV></DIV></P>
+</div>
+<H3 id='Classification Results on test data (19)'>Classification Results on test data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 0.0% (0/3 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>0</TD><TD>3</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>0</TD><TD>0</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+3_test_.png'/><DIV></DIV></DIV></P>
+</div>
+</div>
+<H2 id='Fold 4 (20)'>Fold 4</H2>
+<div class='level2'>
+<H3 id='Classifier (21)'>Classifier</H3>
+<div class='level3'>
+<P><BR/>
+Iris-setosa=-15.5* sepal_length -15.5* sepal_width -4.0* pteal_length +1.75* petal_width +0.25* power(sepal_length;2)+0.0* power(sepal_width;2)+0.5* power(pteal_length;2)+0.0* power(petal_width;2)+0.5* power(sepal_length;3)+0.5* power(sepal_width;3)-1.0* power(pteal_length;3)-0.5* power(petal_width;3)+17.5;<BR/>
+Iris-versicolor=16.0* sepal_length +14.5* sepal_width -0.5* pteal_length -0.5* petal_width +1.375* power(sepal_length;2)-1.25* power(sepal_width;2)-2.25* power(pteal_length;2)+0.0* power(petal_width;2)-0.625* power(sepal_length;3)-0.375* power(sepal_width;3)-1.0* power(pteal_length;3)-0.5* power(petal_width;3)-14.062;<BR/>
+Iris-virginica=-30.0* sepal_length +3.5* sepal_width +12.5* pteal_length -6.0* petal_width +13.0* power(sepal_length;2)+6.0* power(sepal_width;2)-5.0* power(pteal_length;2)+0.0* power(petal_width;2)-2.0* power(sepal_length;3)-8.0* power(sepal_width;3)+1.5* power(pteal_length;3)+6.0* power(petal_width;3)+10.0;</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2FClassifier2Dplot_fold+4.png'/><DIV>Behaviour of classifier:Classifier2Dplot_fold 4.png</DIV></DIV></P>
+</div>
+<H3 id='Classification Results on train data (22)'>Classification Results on train data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 33.33333333333333% (9/27 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>0</TD><TD>0</TD><TD>11</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>7</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>0</TD><TD>9</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+4_train_.png'/><DIV></DIV></DIV></P>
+</div>
+<H3 id='Classification Results on test data (23)'>Classification Results on test data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 0.0% (0/3 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>0</TD><TD>0</TD><TD>1</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>2</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>0</TD><TD>0</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+4_test_.png'/><DIV></DIV></DIV></P>
+</div>
+</div>
+<H2 id='Fold 5 (24)'>Fold 5</H2>
+<div class='level2'>
+<H3 id='Classifier (25)'>Classifier</H3>
+<div class='level3'>
+<P><BR/>
+Iris-setosa=-0.002* sepal_length +0.210* sepal_width +0.038* pteal_length -0.123* petal_width +0.156* power(sepal_length;2)+0.448* power(sepal_width;2)-0.151* power(pteal_length;2)+0.118* power(petal_width;2)-0.041* power(sepal_length;3)+0.327* power(sepal_width;3)-0.198* power(pteal_length;3)+0.189* power(petal_width;3)+0.013;<BR/>
+Iris-versicolor=3.093* sepal_length +2.75* sepal_width +0.443* pteal_length -2.25* petal_width -0.187* power(sepal_length;2)-1.0* power(sepal_width;2)+0.75* power(pteal_length;2)+1.5* power(petal_width;2)+1.125* power(sepal_length;3)+0.218* power(sepal_width;3)+1.0* power(pteal_length;3)-0.5* power(petal_width;3)-4.156;<BR/>
+Iris-virginica=4.75* sepal_length +2.5* sepal_width -2.125* pteal_length +1.0* petal_width -0.312* power(sepal_length;2)+0.25* power(sepal_width;2)+3.5* power(pteal_length;2)+0.25* power(petal_width;2)-1.0* power(sepal_length;3)-0.25* power(sepal_width;3)+1.0* power(pteal_length;3)-0.5* power(petal_width;3)-3.125;</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2FClassifier2Dplot_fold+5.png'/><DIV>Behaviour of classifier:Classifier2Dplot_fold 5.png</DIV></DIV></P>
+</div>
+<H3 id='Classification Results on train data (26)'>Classification Results on train data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 70.37037037037037% (19/27 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>12</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>0</TD><TD>8</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>0</TD><TD>7</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+5_train_.png'/><DIV></DIV></DIV></P>
+</div>
+<H3 id='Classification Results on test data (27)'>Classification Results on test data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 66.66666666666666% (2/3 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>0</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>0</TD><TD>1</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>0</TD><TD>2</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+5_test_.png'/><DIV></DIV></DIV></P>
+</div>
+</div>
+<H2 id='Fold 6 (28)'>Fold 6</H2>
+<div class='level2'>
+<H3 id='Classifier (29)'>Classifier</H3>
+<div class='level3'>
+<P><BR/>
+Iris-setosa=-0.188* sepal_length +0.447* sepal_width -0.043* pteal_length -0.205* petal_width +0.330* power(sepal_length;2)+0.392* power(sepal_width;2)+0.136* power(pteal_length;2)-0.040* power(petal_width;2)+0.005* power(sepal_length;3)+0.196* power(sepal_width;3)-0.130* power(pteal_length;3)+0.194* power(petal_width;3)-0.036;<BR/>
+Iris-versicolor=-9.0* sepal_length -6.875* sepal_width +1.75* pteal_length +2.0* petal_width +1.093* power(sepal_length;2)+0.0* power(sepal_width;2)+1.5* power(pteal_length;2)-0.25* power(petal_width;2)+1.5* power(sepal_length;3)+0.25* power(sepal_width;3)-2.0* power(pteal_length;3)+0.25* power(petal_width;3)+6.687;<BR/>
+Iris-virginica=-0.132* sepal_length +0.221* sepal_width +0.053* pteal_length -0.137* petal_width -0.341* power(sepal_length;2)+0.120* power(sepal_width;2)+0.367* power(pteal_length;2)+0.228* power(petal_width;2)-0.225* power(sepal_length;3)-0.455* power(sepal_width;3)+0.490* power(pteal_length;3)+0.208* power(petal_width;3)+0.112;</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2FClassifier2Dplot_fold+6.png'/><DIV>Behaviour of classifier:Classifier2Dplot_fold 6.png</DIV></DIV></P>
+</div>
+<H3 id='Classification Results on train data (30)'>Classification Results on train data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 70.37037037037037% (19/27 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>12</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>7</TD><TD>0</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>8</TD><TD>0</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+6_train_.png'/><DIV></DIV></DIV></P>
+</div>
+<H3 id='Classification Results on test data (31)'>Classification Results on test data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 66.66666666666666% (2/3 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>0</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>2</TD><TD>0</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>1</TD><TD>0</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+6_test_.png'/><DIV></DIV></DIV></P>
+</div>
+</div>
+<H2 id='Fold 7 (32)'>Fold 7</H2>
+<div class='level2'>
+<H3 id='Classifier (33)'>Classifier</H3>
+<div class='level3'>
+<P><BR/>
+Iris-setosa=20.0* sepal_length +22.875* sepal_width +2.0* pteal_length +2.0* petal_width -2.0* power(sepal_length;2)+0.5* power(sepal_width;2)-0.437* power(pteal_length;2)+0.0* power(petal_width;2)+0.5* power(sepal_length;3)+0.125* power(sepal_width;3)+0.468* power(pteal_length;3)+0.0* power(petal_width;3)-21.5;<BR/>
+Iris-versicolor=0.625* sepal_length +2.687* sepal_width +0.562* pteal_length +0.187* petal_width +2.031* power(sepal_length;2)+0.179* power(sepal_width;2)-0.125* power(pteal_length;2)+0.468* power(petal_width;2)+0.625* power(sepal_length;3)+0.0* power(sepal_width;3)+0.375* power(pteal_length;3)-1.0* power(petal_width;3)-2.531;<BR/>
+Iris-virginica=-57.0* sepal_length -168.0* sepal_width +92.0* pteal_length -58.0* petal_width +224.0* power(sepal_length;2)+12.0* power(sepal_width;2)+160.0* power(pteal_length;2)-248.0* power(petal_width;2)-288.0* power(sepal_length;3)-41.0* power(sepal_width;3)-0.75* power(pteal_length;3)+4.0* power(petal_width;3)+208.0;</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2FClassifier2Dplot_fold+7.png'/><DIV>Behaviour of classifier:Classifier2Dplot_fold 7.png</DIV></DIV></P>
+</div>
+<H3 id='Classification Results on train data (34)'>Classification Results on train data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 29.629629629629626% (8/27 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>0</TD><TD>0</TD><TD>10</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>0</TD><TD>9</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>0</TD><TD>8</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+7_train_.png'/><DIV></DIV></DIV></P>
+</div>
+<H3 id='Classification Results on test data (35)'>Classification Results on test data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 33.33333333333333% (1/3 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>0</TD><TD>0</TD><TD>2</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>0</TD><TD>1</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+7_test_.png'/><DIV></DIV></DIV></P>
+</div>
+</div>
+<H2 id='Fold 8 (36)'>Fold 8</H2>
+<div class='level2'>
+<H3 id='Classifier (37)'>Classifier</H3>
+<div class='level3'>
+<P><BR/>
+Iris-setosa=-4.5* sepal_length -38.0* sepal_width -2.0* pteal_length +5.0* petal_width -8.0* power(sepal_length;2)+35.0* power(sepal_width;2)+1.5* power(pteal_length;2)+2.171* power(petal_width;2)+1.0* power(sepal_length;3)-0.25* power(sepal_width;3)-1.5* power(pteal_length;3)+1.0* power(petal_width;3)+7.75;<BR/>
+Iris-versicolor=21.25* sepal_length +26.0* sepal_width -7.0* pteal_length +1.5* petal_width +0.0* power(sepal_length;2)+0.375* power(sepal_width;2)-5.75* power(pteal_length;2)+3.0* power(petal_width;2)-1.0* power(sepal_length;3)-0.5* power(sepal_width;3)+0.625* power(pteal_length;3)+4.0* power(petal_width;3)-16.0;<BR/>
+Iris-virginica=0.230* sepal_length +0.095* sepal_width +0.340* pteal_length +0.032* petal_width -0.395* power(sepal_length;2)-0.018* power(sepal_width;2)+0.301* power(pteal_length;2)+0.066* power(petal_width;2)-0.400* power(sepal_length;3)+0.108* power(sepal_width;3)+0.268* power(pteal_length;3)+0.354* power(petal_width;3)-0.185;</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2FClassifier2Dplot_fold+8.png'/><DIV>Behaviour of classifier:Classifier2Dplot_fold 8.png</DIV></DIV></P>
+</div>
+<H3 id='Classification Results on train data (38)'>Classification Results on train data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 0.0% (0/27 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>0</TD><TD>10</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>0</TD><TD>9</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>8</TD><TD>0</TD><TD>0</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+8_train_.png'/><DIV></DIV></DIV></P>
+</div>
+<H3 id='Classification Results on test data (39)'>Classification Results on test data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 0.0% (0/3 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>0</TD><TD>2</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>1</TD><TD>0</TD><TD>0</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+8_test_.png'/><DIV></DIV></DIV></P>
+</div>
+</div>
+<H2 id='Fold 9 (40)'>Fold 9</H2>
+<div class='level2'>
+<H3 id='Classifier (41)'>Classifier</H3>
+<div class='level3'>
+<P><BR/>
+Iris-setosa=-5.562* sepal_length -5.5* sepal_width +0.5* pteal_length +0.0* petal_width +1.031* power(sepal_length;2)+1.0* power(sepal_width;2)+0.5* power(pteal_length;2)-1.0* power(petal_width;2)-0.937* power(sepal_length;3)+0.0* power(sepal_width;3)-0.375* power(pteal_length;3)+0.156* power(petal_width;3)+4.5;<BR/>
+Iris-versicolor=0.072* sepal_length -0.415* sepal_width -0.194* pteal_length -0.030* petal_width +0.322* power(sepal_length;2)-0.080* power(sepal_width;2)+0.191* power(pteal_length;2)-0.075* power(petal_width;2)+0.564* power(sepal_length;3)+0.126* power(sepal_width;3)-0.205* power(pteal_length;3)-0.424* power(petal_width;3)+0.369;<BR/>
+Iris-virginica=0.5* sepal_length -6.0* sepal_width -1.0* pteal_length -1.0* petal_width -0.046* power(sepal_length;2)+0.875* power(sepal_width;2)+0.0* power(pteal_length;2)+0.5* power(petal_width;2)-1.5* power(sepal_length;3)+1.0* power(sepal_width;3)+0.25* power(pteal_length;3)+1.5* power(petal_width;3)+3.25;</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2FClassifier2Dplot_fold+9.png'/><DIV>Behaviour of classifier:Classifier2Dplot_fold 9.png</DIV></DIV></P>
+</div>
+<H3 id='Classification Results on train data (42)'>Classification Results on train data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 66.66666666666666% (18/27 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>11</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>0</TD><TD>9</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>0</TD><TD>7</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+9_train_.png'/><DIV></DIV></DIV></P>
+</div>
+<H3 id='Classification Results on test data (43)'>Classification Results on test data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 100.0% (3/3 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>1</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>0</TD><TD>2</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+9_test_.png'/><DIV></DIV></DIV></P>
+</div>
+</div>
+<H2 id='Fold 10 (44)'>Fold 10</H2>
+<div class='level2'>
+<H3 id='Classifier (45)'>Classifier</H3>
+<div class='level3'>
+<P><BR/>
+Iris-setosa=-8.109* sepal_length -5.875* sepal_width -1.5* pteal_length +1.75* petal_width +0.5* power(sepal_length;2)+1.25* power(sepal_width;2)+0.25* power(pteal_length;2)+1.312* power(petal_width;2)+1.25* power(sepal_length;3)+0.25* power(sepal_width;3)-0.25* power(pteal_length;3)-0.218* power(petal_width;3)+5.125;<BR/>
+Iris-versicolor=0.5* sepal_length +1.437* sepal_width -0.218* pteal_length -0.687* petal_width +1.062* power(sepal_length;2)-1.937* power(sepal_width;2)+0.332* power(pteal_length;2)-1.5* power(petal_width;2)-0.089* power(sepal_length;3)+1.031* power(sepal_width;3)+0.812* power(pteal_length;3)+0.125* power(petal_width;3)-0.375;<BR/>
+Iris-virginica=3.343* sepal_length +2.0* sepal_width +0.0* pteal_length +1.5* petal_width -1.625* power(sepal_length;2)+1.0* power(sepal_width;2)-1.5* power(pteal_length;2)+0.25* power(petal_width;2)-0.125* power(sepal_length;3)-6.0* power(sepal_width;3)-1.5* power(pteal_length;3)-0.25* power(petal_width;3)-1.0;</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2FClassifier2Dplot_fold+10.png'/><DIV>Behaviour of classifier:Classifier2Dplot_fold 10.png</DIV></DIV></P>
+</div>
+<H3 id='Classification Results on train data (46)'>Classification Results on train data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 70.37037037037037% (19/27 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>11</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>8</TD><TD>0</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>8</TD><TD>0</TD><TD>0</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+10_train_.png'/><DIV></DIV></DIV></P>
+</div>
+<H3 id='Classification Results on test data (47)'>Classification Results on test data</H3>
+<div class='level3'>
+<P>Class Assignment Accuracy: 66.66666666666666% (2/3 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>1</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>1</TD><TD>0</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>1</TD><TD>0</TD><TD>0</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793184769%2Froc_fold+10_test_.png'/><DIV></DIV></DIV></P>
+</div>
+</div>
+</div>
+</div>
+</BODY>
+</HTML>

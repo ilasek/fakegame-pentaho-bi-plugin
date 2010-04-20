@@ -1,0 +1,1804 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD><TITLE>Report name</TITLE><link rel='stylesheet' media='screen' type='text/css' href='/pentaho/content/fake-game-static/report-html/screen.css' /></HEAD>
+<BODY>
+<div class='fakereport'>
+<div class='bar' id='bar__top'>
+<div class='bar-left' id='bar__topleft'>
+<a href='http://fakegame.sourceforge.net' class='wikilink2' title='FAKE GAME Project' rel='nofollow'>FAKE GAME Report</a>
+</div>
+</div>
+<H1 id='Table of Contents (1)'>Table of Contents</H1>
+<div class='level1'>
+<OL>
+<LI><A href='#Table of Contents (1)' class='wikilink1'>Table of Contents</A></LI>
+<LI><A href='#Overview (2)' class='wikilink1'>Overview</A></LI>
+<LI><A href='#Operation Flow (3)' class='wikilink1'>Operation Flow</A></LI>
+<LI><A href='#Dataset Visualizations (4)' class='wikilink1'>Dataset Visualizations</A></LI>
+<LI><A href='#Feature Ranking (5)' class='wikilink1'>Feature Ranking</A></LI>
+<LI><A href='#Dataset Projection to 2D (6)' class='wikilink1'>Dataset Projection to 2D</A></LI>
+<LI><A href='#Multiple Model Configurations (7)' class='wikilink1'>Multiple Model Configurations</A></LI>
+<OL>
+<LI><A href='#Crossvalidation Strategy: GAME-singlelay (8)' class='wikilink1'>Crossvalidation Strategy: GAME-singlelay</A></LI>
+<OL>
+<LI><A href='#Fold 1 (9)' class='wikilink1'>Fold 1</A></LI>
+<LI><A href='#Fold 2 (13)' class='wikilink1'>Fold 2</A></LI>
+<LI><A href='#Fold 3 (17)' class='wikilink1'>Fold 3</A></LI>
+<LI><A href='#Fold 4 (21)' class='wikilink1'>Fold 4</A></LI>
+<LI><A href='#Fold 5 (25)' class='wikilink1'>Fold 5</A></LI>
+<LI><A href='#Fold 6 (29)' class='wikilink1'>Fold 6</A></LI>
+<LI><A href='#Fold 7 (33)' class='wikilink1'>Fold 7</A></LI>
+<LI><A href='#Fold 8 (37)' class='wikilink1'>Fold 8</A></LI>
+<LI><A href='#Fold 9 (41)' class='wikilink1'>Fold 9</A></LI>
+<LI><A href='#Fold 10 (45)' class='wikilink1'>Fold 10</A></LI>
+</OL><LI><A href='#Crossvalidation Strategy: GAME-increase (49)' class='wikilink1'>Crossvalidation Strategy: GAME-increase</A></LI>
+<OL>
+<LI><A href='#Fold 1 (50)' class='wikilink1'>Fold 1</A></LI>
+<LI><A href='#Fold 2 (54)' class='wikilink1'>Fold 2</A></LI>
+<LI><A href='#Fold 3 (58)' class='wikilink1'>Fold 3</A></LI>
+<LI><A href='#Fold 4 (62)' class='wikilink1'>Fold 4</A></LI>
+<LI><A href='#Fold 5 (66)' class='wikilink1'>Fold 5</A></LI>
+<LI><A href='#Fold 6 (70)' class='wikilink1'>Fold 6</A></LI>
+<LI><A href='#Fold 7 (74)' class='wikilink1'>Fold 7</A></LI>
+<LI><A href='#Fold 8 (78)' class='wikilink1'>Fold 8</A></LI>
+<LI><A href='#Fold 9 (82)' class='wikilink1'>Fold 9</A></LI>
+<LI><A href='#Fold 10 (86)' class='wikilink1'>Fold 10</A></LI>
+</OL><LI><A href='#Crossvalidation Strategy: GAME-inc-unlimit (90)' class='wikilink1'>Crossvalidation Strategy: GAME-inc-unlimit</A></LI>
+<OL>
+<LI><A href='#Fold 1 (91)' class='wikilink1'>Fold 1</A></LI>
+<LI><A href='#Fold 2 (95)' class='wikilink1'>Fold 2</A></LI>
+<LI><A href='#Fold 3 (99)' class='wikilink1'>Fold 3</A></LI>
+<LI><A href='#Fold 4 (103)' class='wikilink1'>Fold 4</A></LI>
+<LI><A href='#Fold 5 (107)' class='wikilink1'>Fold 5</A></LI>
+<LI><A href='#Fold 6 (111)' class='wikilink1'>Fold 6</A></LI>
+<LI><A href='#Fold 7 (115)' class='wikilink1'>Fold 7</A></LI>
+<LI><A href='#Fold 8 (119)' class='wikilink1'>Fold 8</A></LI>
+<LI><A href='#Fold 9 (123)' class='wikilink1'>Fold 9</A></LI>
+<LI><A href='#Fold 10 (127)' class='wikilink1'>Fold 10</A></LI>
+</OL><LI><A href='#Crossvalidation Strategy: Polynomial model with max degree 2 (131)' class='wikilink1'>Crossvalidation Strategy: Polynomial model with max degree 2</A></LI>
+<OL>
+<LI><A href='#Fold 1 (132)' class='wikilink1'>Fold 1</A></LI>
+<LI><A href='#Fold 2 (136)' class='wikilink1'>Fold 2</A></LI>
+<LI><A href='#Fold 3 (140)' class='wikilink1'>Fold 3</A></LI>
+<LI><A href='#Fold 4 (144)' class='wikilink1'>Fold 4</A></LI>
+<LI><A href='#Fold 5 (148)' class='wikilink1'>Fold 5</A></LI>
+<LI><A href='#Fold 6 (152)' class='wikilink1'>Fold 6</A></LI>
+<LI><A href='#Fold 7 (156)' class='wikilink1'>Fold 7</A></LI>
+<LI><A href='#Fold 8 (160)' class='wikilink1'>Fold 8</A></LI>
+<LI><A href='#Fold 9 (164)' class='wikilink1'>Fold 9</A></LI>
+<LI><A href='#Fold 10 (168)' class='wikilink1'>Fold 10</A></LI>
+</OL><LI><A href='#Crossvalidation Strategy: GAME-gmdh (172)' class='wikilink1'>Crossvalidation Strategy: GAME-gmdh</A></LI>
+<OL>
+<LI><A href='#Fold 1 (173)' class='wikilink1'>Fold 1</A></LI>
+<LI><A href='#Fold 2 (177)' class='wikilink1'>Fold 2</A></LI>
+<LI><A href='#Fold 3 (181)' class='wikilink1'>Fold 3</A></LI>
+<LI><A href='#Fold 4 (185)' class='wikilink1'>Fold 4</A></LI>
+<LI><A href='#Fold 5 (189)' class='wikilink1'>Fold 5</A></LI>
+<LI><A href='#Fold 6 (193)' class='wikilink1'>Fold 6</A></LI>
+<LI><A href='#Fold 7 (197)' class='wikilink1'>Fold 7</A></LI>
+<LI><A href='#Fold 8 (201)' class='wikilink1'>Fold 8</A></LI>
+<LI><A href='#Fold 9 (205)' class='wikilink1'>Fold 9</A></LI>
+<LI><A href='#Fold 10 (209)' class='wikilink1'>Fold 10</A></LI>
+</OL></OL></OL></div>
+<H1 id='Overview (2)'>Overview</H1>
+<div class='level1'>
+<P>
+<TABLE class='inline'>
+<CAPTION>General information</CAPTION>
+<TR><TH>Data file:</TH><TD><STRONG>biresultset</STRONG></TD></TR>
+<TR><TH>Mining type:</TH><TD><STRONG>REGRESSION</STRONG></TD></TR>
+<TR><TH># of input attributes:</TH><TD>11</TD></TR>
+<TR><TH># of output attributes:</TH><TD>1</TD></TR>
+<TR><TH>Instances:</TH><TD>24</TD></TR>
+</TABLE>
+</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Input attributes</CAPTION>
+<TR><TH>Attribute</TH><TH>Type</TH><TH>Min</TH><TH>Max</TH><TH>Mean</TH><TH>Median</TH></TR>
+<TR><TD>Day</TD><TD>NUMERIC</TD><TD>86.0</TD><TD>96.0</TD><TD>91.0</TD><TD>91.0</TD></TR>
+<TR><TD>Time</TD><TD>NUMERIC</TD><TD>300.0</TD><TD>2000.0</TD><TD>1150.0</TD><TD>1150.0</TD></TR>
+<TR><TD>Rs</TD><TD>NUMERIC</TD><TD>-0.0644</TD><TD>-0.01612</TD><TD>-0.04026000000000001</TD><TD>-0.04026</TD></TR>
+<TR><TD>Rn</TD><TD>NUMERIC</TD><TD>-60.302</TD><TD>-18.136</TD><TD>-39.21899999999999</TD><TD>-39.219</TD></TR>
+<TR><TD>PAR</TD><TD>NUMERIC</TD><TD>-1.2366</TD><TD>-0.88235</TD><TD>-1.0594749999999993</TD><TD>-1.059475</TD></TR>
+<TR><TD>Tair</TD><TD>NUMERIC</TD><TD>9.5627</TD><TD>14.555</TD><TD>12.058850000000005</TD><TD>12.05885</TD></TR>
+<TR><TD>RH</TD><TD>NUMERIC</TD><TD>77.296</TD><TD>99.53</TD><TD>88.41300000000001</TD><TD>88.41300000000001</TD></TR>
+<TR><TD>u</TD><TD>NUMERIC</TD><TD>0.09975</TD><TD>0.33879</TD><TD>0.21927000000000005</TD><TD>0.21927</TD></TR>
+<TR><TD>SatVapPr</TD><TD>NUMERIC</TD><TD>1.1916</TD><TD>1.6561</TD><TD>1.4238499999999996</TD><TD>1.4238499999999998</TD></TR>
+<TR><TD>VapPress</TD><TD>NUMERIC</TD><TD>1.186</TD><TD>1.2799</TD><TD>1.2329500000000004</TD><TD>1.23295</TD></TR>
+<TR><TD>Battery</TD><TD>NUMERIC</TD><TD>12.522</TD><TD>12.54</TD><TD>12.531</TD><TD>12.530999999999999</TD></TR>
+</TABLE>
+</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Output attributes</CAPTION>
+<TR><TH>Attribute</TH><TH>Type</TH><TH>Min</TH><TH>Max</TH><TH>Mean</TH><TH>Median</TH></TR>
+<TR><TD>water</TD><TD>NUMERIC</TD><TD>0.1145</TD><TD>0.91</TD><TD>0.51225</TD><TD>0.51225</TD></TR>
+</TABLE>
+</P>
+</div>
+<H1 id='Operation Flow (3)'>Operation Flow</H1>
+<div class='level1'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Operation flow</CAPTION>
+<TR><TH>Operation</TH><TH>Time</TH><TH>Description</TH></TR>
+<TR><TD>Register subreports</TD><TD>00:00:00:000</TD><TD>Registers and defines order of subreports.</TD></TR>
+<TR><TD>ImportPentahoBI</TD><TD>00:00:00:003</TD><TD>Is able to import the result-set from another action in Pentaho BI action sequence</TD></TR>
+<TR><TD>Prepare reports</TD><TD>00:00:00:000</TD><TD>Prepares a report directory.</TD></TR>
+<TR><TD>Basic Preprocessing</TD><TD>00:00:00:000</TD><TD>Performs missing values imputations, ...</TD></TR>
+<TR><TD>Data reduction</TD><TD>00:00:00:000</TD><TD>Reduces the number of instances, if the dataset is too large.</TD></TR>
+<TR><TD>Feature ranking</TD><TD>00:00:00:364</TD><TD>Feature ranking of dataset attributes</TD></TR>
+<TR><TD>Visualizes dataset</TD><TD>00:00:01:290</TD><TD>Visualizes dataset using histograms, parallel plots, Andrew's curves, etc.</TD></TR>
+<TR><TD>Project dataset to 2D</TD><TD>00:00:00:001</TD><TD>Projects dataset to 2D using Sammon's or Drchal's projection.</TD></TR>
+<TR><TD>Multiple model iterator</TD><TD>00:00:11:256</TD><TD>If more than one classifier/model config is given, this iterates over all of them.</TD></TR>
+<TR><TD>Operation Flow Info</TD><TD>00:00:00:000</TD><TD>Constructs this subreport.</TD></TR>
+<TR><TD><STRONG>Total</STRONG></TD><TD><STRONG>00:00:12:914</STRONG></TD><TD><STRONG>Total time spent.</STRONG></TD></TR>
+</TABLE>
+</P>
+</div>
+<H1 id='Dataset Visualizations (4)'>Dataset Visualizations</H1>
+<div class='level1'>
+<P>Only 10 most important features selected.</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Finput_hist_Day_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Finput_hist_Time_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Finput_hist_Rs_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Finput_hist_Rn_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Finput_hist_PAR_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Finput_hist_Tair_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Finput_hist_RH_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Finput_hist_u_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Finput_hist_VapPress_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Finput_hist_Battery_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Foutput_hist_water_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fparallel.png'/><DIV>Parallel plot </DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fandrew.png'/><DIV>Andrew's curves</DIV></DIV></P>
+</div>
+<H1 id='Feature Ranking (5)'>Feature Ranking</H1>
+<div class='level1'>
+<P>Note: the number of attributes in graphs may be reduced to fit.</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>XyMI (Compute ranks as a sorted order of sums of MI between specific attribute and  the rest attributes. )</CAPTION>
+<TR><TH>Rank</TH><TH>1</TH><TH>2</TH><TH>3</TH><TH>4</TH><TH>5</TH><TH>6</TH><TH>7</TH><TH>8</TH><TH>9</TH><TH>10</TH><TH>11</TH></TR>
+<TR><TH>Attribute</TH><TD>Day</TD><TD>VapPress</TD><TD>Battery</TD><TD>Time</TD><TD>Rs</TD><TD>Rn</TD><TD>PAR</TD><TD>Tair</TD><TD>RH</TD><TD>u</TD><TD>SatVapPr</TD></TR>
+<TR><TH>Importance</TH><TD>1100.3910001730842</TD><TD>1100.3910001730842</TD><TD>990.3519001557759</TD><TD>880.3128001384674</TD><TD>770.273700121159</TD><TD>660.2346001038505</TD><TD>550.1955000865421</TD><TD>440.15640006923365</TD><TD>330.1173000519252</TD><TD>220.07820003461683</TD><TD>110.03910001730841</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Ffr_0_XyMI.png'/><DIV></DIV></DIV></P>
+</div>
+<H1 id='Dataset Projection to 2D (6)'>Dataset Projection to 2D</H1>
+<div class='level1'>
+</div>
+<H1 id='Multiple Model Configurations (7)'>Multiple Model Configurations</H1>
+<div class='level1'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Model overview</CAPTION>
+<TR><TH>Model configuration</TH><TH>RMSE on TEST set</TH></TR>
+<TR><TD>GAME-singlelay</TD><TD>2.778677959123817E-10</TD></TR>
+<TR><TD>GAME-increase</TD><TD>1.7854212870669834E-10</TD></TR>
+<TR><TD>GAME-inc-unlimit</TD><TD>1.3327480883901207E-10</TD></TR>
+<TR><TD>Polynomial model with max degree 2</TD><TD>4.038213796076781E-8</TD></TR>
+<TR><TD><STRONG>GAME-gmdh</STRONG></TD><TD><STRONG>4.217568890298055E-11</STRONG></TD></TR>
+</TABLE>
+</P>
+<H2 id='Crossvalidation Strategy: GAME-singlelay (8)'>Crossvalidation Strategy: GAME-singlelay</H2>
+<div class='level2'>
+<H3>Crossvalidation: Regression Results on train data (GAME-singlelay)</H3>
+<P>10-th fold crossvalidation.</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.7786781246260934E-10</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.7786781246260934E-10</TD></TR>
+</TABLE>
+</P>
+<H3>Crossvalidation: Regression Results on test data (GAME-singlelay)</H3>
+<P>10-th fold crossvalidation.</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.778677959123817E-10</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.778677959123817E-10</TD></TR>
+</TABLE>
+</P>
+<H3 id='Fold 1 (9)'>Fold 1</H3>
+<div class='level3'>
+<H4 id='Models (10)'>Models</H4>
+<div class='level4'>
+<P>water = -0.315* (Day-86.0)/10.0 -0.248* (SatVapPr-1.1916)/0.4644999999999999 +0.435* (Battery-12.522)/0.017999999999998906 +0.564</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-singlelay%2C+fold+1.png'/><DIV>Behaviour of model:regression2D_GAME-singlelay, fold 1.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (11)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>7.850462293418876E-17</TD></TR>
+<TR><TD>OVERALL</TD><TD>7.850462293418876E-17</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (12)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>7.850462293418876E-17</TD></TR>
+<TR><TD>OVERALL</TD><TD>7.850462293418876E-17</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 2 (13)'>Fold 2</H3>
+<div class='level3'>
+<H4 id='Models (14)'>Models</H4>
+<div class='level4'>
+<P>water = 2.850/(1+exp(-(-0.422* (Time-300.0)/1700.0 + 0.674* (Rn--60.302)/60.302 -0.579* (SatVapPr-1.1916)/0.4644999999999999 + 0.417)))+-1.020</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-singlelay%2C+fold+2.png'/><DIV>Behaviour of model:regression2D_GAME-singlelay, fold 2.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (15)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.1089683507967863E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.1089683507967863E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (16)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.1089683507967865E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.1089683507967865E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 3 (17)'>Fold 3</H3>
+<div class='level3'>
+<H4 id='Models (18)'>Models</H4>
+<div class='level4'>
+<P>water = -0.999* (SatVapPr-1.1916)/0.4644999999999999 +0.999</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-singlelay%2C+fold+3.png'/><DIV>Behaviour of model:regression2D_GAME-singlelay, fold 3.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (19)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.6550227688315153E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.6550227688315153E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (20)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 4 (21)'>Fold 4</H3>
+<div class='level3'>
+<H4 id='Models (22)'>Models</H4>
+<div class='level4'>
+<P>water = -0.155* (Day-86.0)/10.0 +0.117* (Time-300.0)/1700.0 +0.358* (Rs--0.0644)/0.0644 -0.059* (Rn--60.302)/60.302 -0.373* (VapPress-1.186)/0.0939000000000001 +0.360* (Battery-12.522)/0.017999999999998906 +0.411</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-singlelay%2C+fold+4.png'/><DIV>Behaviour of model:regression2D_GAME-singlelay, fold 4.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (23)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.6697084706087578E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.6697084706087578E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (24)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.6697084706087582E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.6697084706087582E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 5 (25)'>Fold 5</H3>
+<div class='level3'>
+<H4 id='Models (26)'>Models</H4>
+<div class='level4'>
+<P>water = 1.000* (Battery-12.522)/0.017999999999998906 -4.440E-16</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-singlelay%2C+fold+5.png'/><DIV>Behaviour of model:regression2D_GAME-singlelay, fold 5.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (27)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.4532694666933986E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.4532694666933986E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (28)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.4532694666933986E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.4532694666933986E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 6 (29)'>Fold 6</H3>
+<div class='level3'>
+<H4 id='Models (30)'>Models</H4>
+<div class='level4'>
+<P>water = 1.333* (Rs--0.0644)/0.0644 +0.0</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-singlelay%2C+fold+6.png'/><DIV>Behaviour of model:regression2D_GAME-singlelay, fold 6.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (31)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (32)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 7 (33)'>Fold 7</H3>
+<div class='level3'>
+<H4 id='Models (34)'>Models</H4>
+<div class='level4'>
+<P>water = -0.306* (u-0.09975)/0.23903999999999997 -0.083* (SatVapPr-1.1916)/0.4644999999999999 -0.610* (VapPress-1.186)/0.0939000000000001 +1.000</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-singlelay%2C+fold+7.png'/><DIV>Behaviour of model:regression2D_GAME-singlelay, fold 7.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (35)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.4276213934271013E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.4276213934271013E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (36)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.4276213934271013E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.4276213934271013E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 8 (37)'>Fold 8</H3>
+<div class='level3'>
+<H4 id='Models (38)'>Models</H4>
+<div class='level4'>
+<P>water = -0.430* (Day-86.0)/10.0 +0.565* (Rs--0.0644)/0.0644 +0.098* (Rn--60.302)/60.302 -0.036* (Tair-9.5627)/4.9923 -0.041* (VapPress-1.186)/0.0939000000000001 +0.507</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-singlelay%2C+fold+8.png'/><DIV>Behaviour of model:regression2D_GAME-singlelay, fold 8.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (39)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>9.813077866773595E-18</TD></TR>
+<TR><TD>OVERALL</TD><TD>9.813077866773595E-18</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (40)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>9.813077866773595E-18</TD></TR>
+<TR><TD>OVERALL</TD><TD>9.813077866773595E-18</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 9 (41)'>Fold 9</H3>
+<div class='level3'>
+<H4 id='Models (42)'>Models</H4>
+<div class='level4'>
+<P>water = -0.150* (Day-86.0)/10.0 +0.404* (Rs--0.0644)/0.0644 +0.235* (Rn--60.302)/60.302 -0.124* (Tair-9.5627)/4.9923 -0.100* (RH-77.296)/22.233999999999995 -0.128* (VapPress-1.186)/0.0939000000000001 +0.228* (Battery-12.522)/0.017999999999998906 +0.403</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-singlelay%2C+fold+9.png'/><DIV>Behaviour of model:regression2D_GAME-singlelay, fold 9.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (43)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>3.9362553782237394E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>3.9362553782237394E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (44)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>3.9362553782237394E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>3.9362553782237394E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 10 (45)'>Fold 10</H3>
+<div class='level3'>
+<H4 id='Models (46)'>Models</H4>
+<div class='level4'>
+<P>water = -0.268* (Day-86.0)/10.0 +0.563* (Rn--60.302)/60.302 -0.017* (SatVapPr-1.1916)/0.4644999999999999 -0.320* (VapPress-1.186)/0.0939000000000001 +0.605</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-singlelay%2C+fold+10.png'/><DIV>Behaviour of model:regression2D_GAME-singlelay, fold 10.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (47)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.6768594809361232E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.6768594809361232E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (48)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.6768594809361232E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.6768594809361232E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+</div>
+<H2 id='Crossvalidation Strategy: GAME-increase (49)'>Crossvalidation Strategy: GAME-increase</H2>
+<div class='level2'>
+<H3>Crossvalidation: Regression Results on train data (GAME-increase)</H3>
+<P>10-th fold crossvalidation.</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.785421411254548E-10</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.785421411254548E-10</TD></TR>
+</TABLE>
+</P>
+<H3>Crossvalidation: Regression Results on test data (GAME-increase)</H3>
+<P>10-th fold crossvalidation.</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.7854212870669834E-10</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.7854212870669834E-10</TD></TR>
+</TABLE>
+</P>
+<H3 id='Fold 1 (50)'>Fold 1</H3>
+<div class='level3'>
+<H4 id='Models (51)'>Models</H4>
+<div class='level4'>
+<P>water = -1.0* (VapPress-1.186)/0.0939000000000001 +1.0</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-increase%2C+fold+1.png'/><DIV>Behaviour of model:regression2D_GAME-increase, fold 1.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (52)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (53)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 2 (54)'>Fold 2</H3>
+<div class='level3'>
+<H4 id='Models (55)'>Models</H4>
+<div class='level4'>
+<P>water = 1.430* (Rn--60.302)/60.302 -2.220E-16</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-increase%2C+fold+2.png'/><DIV>Behaviour of model:regression2D_GAME-increase, fold 2.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (56)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.3447059996756062E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.3447059996756062E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (57)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 3 (58)'>Fold 3</H3>
+<div class='level3'>
+<H4 id='Models (59)'>Models</H4>
+<div class='level4'>
+<P>water = 1.430* (Rn--60.302)/60.302 +1.110E-16</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-increase%2C+fold+3.png'/><DIV>Behaviour of model:regression2D_GAME-increase, fold 3.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (60)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>5.551115123125783E-17</TD></TR>
+<TR><TD>OVERALL</TD><TD>5.551115123125783E-17</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (61)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>8.326672684688674E-17</TD></TR>
+<TR><TD>OVERALL</TD><TD>8.326672684688674E-17</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 4 (62)'>Fold 4</H3>
+<div class='level3'>
+<H4 id='Models (63)'>Models</H4>
+<div class='level4'>
+<P>water = 1.430* (Rn--60.302)/60.302 +1.110E-16</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-increase%2C+fold+4.png'/><DIV>Behaviour of model:regression2D_GAME-increase, fold 4.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (64)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>5.887846720064156E-17</TD></TR>
+<TR><TD>OVERALL</TD><TD>5.887846720064156E-17</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (65)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>5.887846720064156E-17</TD></TR>
+<TR><TD>OVERALL</TD><TD>5.887846720064156E-17</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 5 (66)'>Fold 5</H3>
+<div class='level3'>
+<H4 id='Models (67)'>Models</H4>
+<div class='level4'>
+<P>water = -1.0* (Day-86.0)/10.0 +1.0</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-increase%2C+fold+5.png'/><DIV>Behaviour of model:regression2D_GAME-increase, fold 5.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (68)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (69)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 6 (70)'>Fold 6</H3>
+<div class='level3'>
+<H4 id='Models (71)'>Models</H4>
+<div class='level4'>
+<P>water = -0.999* (Time-300.0)/1700.0 +0.999</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-increase%2C+fold+6.png'/><DIV>Behaviour of model:regression2D_GAME-increase, fold 6.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (72)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.6550227688315153E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.6550227688315153E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (73)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 7 (74)'>Fold 7</H3>
+<div class='level3'>
+<H4 id='Models (75)'>Models</H4>
+<div class='level4'>
+<P>water = 12.442/(1+exp(-(-0.324* (u-0.09975)/0.23903999999999997 + 0.347)))+-6.291</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-increase%2C+fold+7.png'/><DIV>Behaviour of model:regression2D_GAME-increase, fold 7.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (76)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.7854207008325795E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.7854207008325795E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (77)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.7854207008325795E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.7854207008325795E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 8 (78)'>Fold 8</H3>
+<div class='level3'>
+<H4 id='Models (79)'>Models</H4>
+<div class='level4'>
+<P>water = -1.000* (Day-86.0)/10.0 +1.000</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-increase%2C+fold+8.png'/><DIV>Behaviour of model:regression2D_GAME-increase, fold 8.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (80)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.4802973661668753E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.4802973661668753E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (81)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.220446049250313E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.220446049250313E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 9 (82)'>Fold 9</H3>
+<div class='level3'>
+<H4 id='Models (83)'>Models</H4>
+<div class='level4'>
+<P>water = -1.0* (Tair-9.5627)/4.9923 +1.0</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-increase%2C+fold+9.png'/><DIV>Behaviour of model:regression2D_GAME-increase, fold 9.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (84)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (85)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 10 (86)'>Fold 10</H3>
+<div class='level3'>
+<H4 id='Models (87)'>Models</H4>
+<div class='level4'>
+<P>water = -0.999* (Day-86.0)/10.0 +0.999</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-increase%2C+fold+10.png'/><DIV>Behaviour of model:regression2D_GAME-increase, fold 10.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (88)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.4802973661668753E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.4802973661668753E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (89)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.220446049250313E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.220446049250313E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+</div>
+<H2 id='Crossvalidation Strategy: GAME-inc-unlimit (90)'>Crossvalidation Strategy: GAME-inc-unlimit</H2>
+<div class='level2'>
+<H3>Crossvalidation: Regression Results on train data (GAME-inc-unlimit)</H3>
+<P>10-th fold crossvalidation.</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.3728933015610326E-10</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.3728933015610326E-10</TD></TR>
+</TABLE>
+</P>
+<H3>Crossvalidation: Regression Results on test data (GAME-inc-unlimit)</H3>
+<P>10-th fold crossvalidation.</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.3327480883901207E-10</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.3327480883901207E-10</TD></TR>
+</TABLE>
+</P>
+<H3 id='Fold 1 (91)'>Fold 1</H3>
+<div class='level3'>
+<H4 id='Models (92)'>Models</H4>
+<div class='level4'>
+<P>water = 1.333* (Rs--0.0644)/0.0644 +0.0</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-inc-unlimit%2C+fold+1.png'/><DIV>Behaviour of model:regression2D_GAME-inc-unlimit, fold 1.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (93)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (94)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 2 (95)'>Fold 2</H3>
+<div class='level3'>
+<H4 id='Models (96)'>Models</H4>
+<div class='level4'>
+<P>water = -11.623/(1+exp(-(0.348* (VapPress-1.186)/0.0939000000000001 -0.361)))+5.773</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-inc-unlimit%2C+fold+2.png'/><DIV>Behaviour of model:regression2D_GAME-inc-unlimit, fold 2.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (97)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.2520319110263472E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.2520319110263472E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (98)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.2026217923851811E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.2026217923851811E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 3 (99)'>Fold 3</H3>
+<div class='level3'>
+<H4 id='Models (100)'>Models</H4>
+<div class='level4'>
+<P>water = -1.000* (Time-300.0)/1700.0 +1.000</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-inc-unlimit%2C+fold+3.png'/><DIV>Behaviour of model:regression2D_GAME-inc-unlimit, fold 3.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (101)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.4802973661668753E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.4802973661668753E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (102)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.5700924586837752E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.5700924586837752E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 4 (103)'>Fold 4</H3>
+<div class='level3'>
+<H4 id='Models (104)'>Models</H4>
+<div class='level4'>
+<P>water = -1.000* (Time-300.0)/1700.0 +1.000</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-inc-unlimit%2C+fold+4.png'/><DIV>Behaviour of model:regression2D_GAME-inc-unlimit, fold 4.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (105)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.4802973661668753E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.4802973661668753E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (106)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.5700924586837752E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.5700924586837752E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 5 (107)'>Fold 5</H3>
+<div class='level3'>
+<H4 id='Models (108)'>Models</H4>
+<div class='level4'>
+<P>water = 1.812/(1+exp(-(7.089* (Battery-12.522)/0.017999999999998906 -0.211)))+-0.810</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-inc-unlimit%2C+fold+5.png'/><DIV>Behaviour of model:regression2D_GAME-inc-unlimit, fold 5.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (109)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.208605533775679E-10</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.208605533775679E-10</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (110)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.3012545208024306E-10</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.3012545208024306E-10</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 6 (111)'>Fold 6</H3>
+<div class='level3'>
+<H4 id='Models (112)'>Models</H4>
+<div class='level4'>
+<P>water = -1.0* (u-0.09975)/0.23903999999999997 +1.0</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-inc-unlimit%2C+fold+6.png'/><DIV>Behaviour of model:regression2D_GAME-inc-unlimit, fold 6.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (113)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (114)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 7 (115)'>Fold 7</H3>
+<div class='level3'>
+<H4 id='Models (116)'>Models</H4>
+<div class='level4'>
+<P>water = 1.430* (Rn--60.302)/60.302 -2.220E-16</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-inc-unlimit%2C+fold+7.png'/><DIV>Behaviour of model:regression2D_GAME-inc-unlimit, fold 7.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (117)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.3447059996756062E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.3447059996756062E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (118)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.2757001226805672E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.2757001226805672E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 8 (119)'>Fold 8</H3>
+<div class='level3'>
+<H4 id='Models (120)'>Models</H4>
+<div class='level4'>
+<P>water = -1.0* (Time-300.0)/1700.0 +1.0</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-inc-unlimit%2C+fold+8.png'/><DIV>Behaviour of model:regression2D_GAME-inc-unlimit, fold 8.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (121)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (122)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 9 (123)'>Fold 9</H3>
+<div class='level3'>
+<H4 id='Models (124)'>Models</H4>
+<div class='level4'>
+<P>water = -0.999* (SatVapPr-1.1916)/0.4644999999999999 +0.999</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-inc-unlimit%2C+fold+9.png'/><DIV>Behaviour of model:regression2D_GAME-inc-unlimit, fold 9.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (125)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.4802973661668753E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.4802973661668753E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (126)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.5700924586837752E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.5700924586837752E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 10 (127)'>Fold 10</H3>
+<div class='level3'>
+<H4 id='Models (128)'>Models</H4>
+<div class='level4'>
+<P>water = 1.000* (Battery-12.522)/0.017999999999998906 -4.440E-16</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-inc-unlimit%2C+fold+10.png'/><DIV>Behaviour of model:regression2D_GAME-inc-unlimit, fold 10.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (129)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.5859730762992425E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.5859730762992425E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (130)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.4532694666933986E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.4532694666933986E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+</div>
+<H2 id='Crossvalidation Strategy: Polynomial model with max degree 2 (131)'>Crossvalidation Strategy: Polynomial model with max degree 2</H2>
+<div class='level2'>
+<H3>Crossvalidation: Regression Results on train data (Polynomial model with max degree 2)</H3>
+<P>10-th fold crossvalidation.</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>3.046768147852388E-8</TD></TR>
+<TR><TD>OVERALL</TD><TD>3.046768147852388E-8</TD></TR>
+</TABLE>
+</P>
+<H3>Crossvalidation: Regression Results on test data (Polynomial model with max degree 2)</H3>
+<P>10-th fold crossvalidation.</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>4.038213796076781E-8</TD></TR>
+<TR><TD>OVERALL</TD><TD>4.038213796076781E-8</TD></TR>
+</TABLE>
+</P>
+<H3 id='Fold 1 (132)'>Fold 1</H3>
+<div class='level3'>
+<H4 id='Models (133)'>Models</H4>
+<div class='level4'>
+<P>water = 0.311* (Day-86.0)/10.0 -0.027* (Time-300.0)/1700.0 +0.411* (Rs--0.0644)/0.0644 +0.041* (Rn--60.302)/60.302 -0.258* (PAR--1.2366)/1.2366 +0.426* (Tair-9.5627)/4.9923 +0.431* (RH-77.296)/22.233999999999995 -0.219* (u-0.09975)/0.23903999999999997 -0.172* (SatVapPr-1.1916)/0.4644999999999999 -0.152* (VapPress-1.186)/0.0939000000000001 -0.018* (Battery-12.522)/0.017999999999998906 +0.179* power((Day-86.0)/10.0;2)-0.146* power((Time-300.0)/1700.0;2)-0.018* power((Rs--0.0644)/0.0644;2)-0.170* power((Rn--60.302)/60.302;2)+0.058* power((PAR--1.2366)/1.2366;2)+0.032* power((Tair-9.5627)/4.9923;2)+0.274* power((RH-77.296)/22.233999999999995;2)-0.176* power((u-0.09975)/0.23903999999999997;2)-0.033* power((SatVapPr-1.1916)/0.4644999999999999;2)-0.041* power((VapPress-1.186)/0.0939000000000001;2)-0.021* power((Battery-12.522)/0.017999999999998906;2)+0.089</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_Polynomial+model+with+max+degree+2%2C+fold+1.png'/><DIV>Behaviour of model:regression2D_Polynomial model with max degree 2, fold 1.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (134)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.0555116622019384E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.0555116622019384E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (135)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.08183061623286E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.08183061623286E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 2 (136)'>Fold 2</H3>
+<div class='level3'>
+<H4 id='Models (137)'>Models</H4>
+<div class='level4'>
+<P>water = -0.185* (Day-86.0)/10.0 +0.185* (Time-300.0)/1700.0 +0.078* (Rs--0.0644)/0.0644 +0.067* (Rn--60.302)/60.302 -0.264* (PAR--1.2366)/1.2366 -0.075* (Tair-9.5627)/4.9923 +0.286* (RH-77.296)/22.233999999999995 +0.129* (u-0.09975)/0.23903999999999997 +0.168* (SatVapPr-1.1916)/0.4644999999999999 +0.079* (VapPress-1.186)/0.0939000000000001 +0.062* (Battery-12.522)/0.017999999999998906 +0.065* power((Day-86.0)/10.0;2)-0.214* power((Time-300.0)/1700.0;2)-0.235* power((Rs--0.0644)/0.0644;2)-0.256* power((Rn--60.302)/60.302;2)+0.081* power((PAR--1.2366)/1.2366;2)-0.373* power((Tair-9.5627)/4.9923;2)+0.101* power((RH-77.296)/22.233999999999995;2)+0.125* power((u-0.09975)/0.23903999999999997;2)-0.232* power((SatVapPr-1.1916)/0.4644999999999999;2)+0.073* power((VapPress-1.186)/0.0939000000000001;2)+0.378* power((Battery-12.522)/0.017999999999998906;2)+0.322</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_Polynomial+model+with+max+degree+2%2C+fold+2.png'/><DIV>Behaviour of model:regression2D_Polynomial model with max degree 2, fold 2.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (138)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.9334636360113188E-7</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.9334636360113188E-7</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (139)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.8514765151865795E-7</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.8514765151865795E-7</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 3 (140)'>Fold 3</H3>
+<div class='level3'>
+<H4 id='Models (141)'>Models</H4>
+<div class='level4'>
+<P>water = -0.049* (Day-86.0)/10.0 +0.210* (Time-300.0)/1700.0 +0.082* (Rs--0.0644)/0.0644 -0.217* (Rn--60.302)/60.302 +0.177* (PAR--1.2366)/1.2366 -0.137* (Tair-9.5627)/4.9923 +0.358* (RH-77.296)/22.233999999999995 -0.046* (u-0.09975)/0.23903999999999997 +0.233* (SatVapPr-1.1916)/0.4644999999999999 -0.090* (VapPress-1.186)/0.0939000000000001 -0.127* (Battery-12.522)/0.017999999999998906 -0.107* power((Day-86.0)/10.0;2)-0.252* power((Time-300.0)/1700.0;2)-0.295* power((Rs--0.0644)/0.0644;2)+0.159* power((Rn--60.302)/60.302;2)-0.259* power((PAR--1.2366)/1.2366;2)+0.227* power((Tair-9.5627)/4.9923;2)+0.335* power((RH-77.296)/22.233999999999995;2)-0.095* power((u-0.09975)/0.23903999999999997;2)-0.243* power((SatVapPr-1.1916)/0.4644999999999999;2)+0.028* power((VapPress-1.186)/0.0939000000000001;2)+0.319* power((Battery-12.522)/0.017999999999998906;2)+0.292</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_Polynomial+model+with+max+degree+2%2C+fold+3.png'/><DIV>Behaviour of model:regression2D_Polynomial model with max degree 2, fold 3.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (142)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>5.176297720815338E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>5.176297720815338E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (143)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>5.348502534060082E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>5.348502534060082E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 4 (144)'>Fold 4</H3>
+<div class='level3'>
+<H4 id='Models (145)'>Models</H4>
+<div class='level4'>
+<P>water = 0.129* (Day-86.0)/10.0 -0.272* (Time-300.0)/1700.0 +0.282* (Rs--0.0644)/0.0644 +0.141* (Rn--60.302)/60.302 +0.037* (PAR--1.2366)/1.2366 -0.015* (Tair-9.5627)/4.9923 -0.146* (RH-77.296)/22.233999999999995 -0.253* (u-0.09975)/0.23903999999999997 +0.074* (SatVapPr-1.1916)/0.4644999999999999 +0.266* (VapPress-1.186)/0.0939000000000001 +0.004* (Battery-12.522)/0.017999999999998906 +0.049* power((Day-86.0)/10.0;2)-0.098* power((Time-300.0)/1700.0;2)-0.155* power((Rs--0.0644)/0.0644;2)+0.321* power((Rn--60.302)/60.302;2)+0.051* power((PAR--1.2366)/1.2366;2)-0.011* power((Tair-9.5627)/4.9923;2)+0.327* power((RH-77.296)/22.233999999999995;2)+0.249* power((u-0.09975)/0.23903999999999997;2)+0.075* power((SatVapPr-1.1916)/0.4644999999999999;2)-0.299* power((VapPress-1.186)/0.0939000000000001;2)+0.343* power((Battery-12.522)/0.017999999999998906;2)+0.090</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_Polynomial+model+with+max+degree+2%2C+fold+4.png'/><DIV>Behaviour of model:regression2D_Polynomial model with max degree 2, fold 4.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (146)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>4.899237917656609E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>4.899237917656609E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (147)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>5.139773754207553E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>5.139773754207553E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 5 (148)'>Fold 5</H3>
+<div class='level3'>
+<H4 id='Models (149)'>Models</H4>
+<div class='level4'>
+<P>water = 0.193* (Day-86.0)/10.0 -0.063* (Time-300.0)/1700.0 -0.198* (Rs--0.0644)/0.0644 +0.071* (Rn--60.302)/60.302 -0.158* (PAR--1.2366)/1.2366 +0.162* (Tair-9.5627)/4.9923 +0.345* (RH-77.296)/22.233999999999995 -0.123* (u-0.09975)/0.23903999999999997 -0.242* (SatVapPr-1.1916)/0.4644999999999999 +0.264* (VapPress-1.186)/0.0939000000000001 -0.153* (Battery-12.522)/0.017999999999998906 +0.052* power((Day-86.0)/10.0;2)-0.002* power((Time-300.0)/1700.0;2)-0.217* power((Rs--0.0644)/0.0644;2)+0.088* power((Rn--60.302)/60.302;2)+0.200* power((PAR--1.2366)/1.2366;2)-0.141* power((Tair-9.5627)/4.9923;2)+0.406* power((RH-77.296)/22.233999999999995;2)-0.392* power((u-0.09975)/0.23903999999999997;2)-0.147* power((SatVapPr-1.1916)/0.4644999999999999;2)+0.226* power((VapPress-1.186)/0.0939000000000001;2)+0.337* power((Battery-12.522)/0.017999999999998906;2)+0.242</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_Polynomial+model+with+max+degree+2%2C+fold+5.png'/><DIV>Behaviour of model:regression2D_Polynomial model with max degree 2, fold 5.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (150)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.4693862368924136E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.4693862368924136E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (151)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.3941843932302383E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.3941843932302383E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 6 (152)'>Fold 6</H3>
+<div class='level3'>
+<H4 id='Models (153)'>Models</H4>
+<div class='level4'>
+<P>water = -0.019* (Day-86.0)/10.0 -0.026* (Time-300.0)/1700.0 -0.016* (Rs--0.0644)/0.0644 -0.110* (Rn--60.302)/60.302 -0.037* (PAR--1.2366)/1.2366 -0.141* (Tair-9.5627)/4.9923 +0.196* (RH-77.296)/22.233999999999995 -0.165* (u-0.09975)/0.23903999999999997 +0.317* (SatVapPr-1.1916)/0.4644999999999999 -0.091* (VapPress-1.186)/0.0939000000000001 +0.185* (Battery-12.522)/0.017999999999998906 -0.047* power((Day-86.0)/10.0;2)+0.111* power((Time-300.0)/1700.0;2)+0.423* power((Rs--0.0644)/0.0644;2)+0.162* power((Rn--60.302)/60.302;2)+0.236* power((PAR--1.2366)/1.2366;2)+0.085* power((Tair-9.5627)/4.9923;2)+0.319* power((RH-77.296)/22.233999999999995;2)+0.078* power((u-0.09975)/0.23903999999999997;2)-0.282* power((SatVapPr-1.1916)/0.4644999999999999;2)+0.048* power((VapPress-1.186)/0.0939000000000001;2)-0.053* power((Battery-12.522)/0.017999999999998906;2)+0.124</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_Polynomial+model+with+max+degree+2%2C+fold+6.png'/><DIV>Behaviour of model:regression2D_Polynomial model with max degree 2, fold 6.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (154)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>7.557553006130025E-11</TD></TR>
+<TR><TD>OVERALL</TD><TD>7.557553006130025E-11</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (155)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>7.845729486011002E-11</TD></TR>
+<TR><TD>OVERALL</TD><TD>7.845729486011002E-11</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 7 (156)'>Fold 7</H3>
+<div class='level3'>
+<H4 id='Models (157)'>Models</H4>
+<div class='level4'>
+<P>water = -0.013* (Day-86.0)/10.0 -0.275* (Time-300.0)/1700.0 +0.104* (Rs--0.0644)/0.0644 -0.123* (Rn--60.302)/60.302 -0.231* (PAR--1.2366)/1.2366 +0.024* (Tair-9.5627)/4.9923 +0.122* (RH-77.296)/22.233999999999995 -0.277* (u-0.09975)/0.23903999999999997 +0.141* (SatVapPr-1.1916)/0.4644999999999999 +0.012* (VapPress-1.186)/0.0939000000000001 +0.071* (Battery-12.522)/0.017999999999998906 +0.155* power((Day-86.0)/10.0;2)-0.130* power((Time-300.0)/1700.0;2)+0.184* power((Rs--0.0644)/0.0644;2)+0.284* power((Rn--60.302)/60.302;2)-0.262* power((PAR--1.2366)/1.2366;2)+0.236* power((Tair-9.5627)/4.9923;2)+0.246* power((RH-77.296)/22.233999999999995;2)-0.197* power((u-0.09975)/0.23903999999999997;2)-0.084* power((SatVapPr-1.1916)/0.4644999999999999;2)+0.181* power((VapPress-1.186)/0.0939000000000001;2)+0.008* power((Battery-12.522)/0.017999999999998906;2)+0.315</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_Polynomial+model+with+max+degree+2%2C+fold+7.png'/><DIV>Behaviour of model:regression2D_Polynomial model with max degree 2, fold 7.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (158)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.1054946301415617E-8</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.1054946301415617E-8</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (159)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.10921499932124E-8</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.10921499932124E-8</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 8 (160)'>Fold 8</H3>
+<div class='level3'>
+<H4 id='Models (161)'>Models</H4>
+<div class='level4'>
+<P>water = 0.001* (Day-86.0)/10.0 -0.070* (Time-300.0)/1700.0 +0.141* (Rs--0.0644)/0.0644 -0.140* (Rn--60.302)/60.302 +0.193* (PAR--1.2366)/1.2366 -0.092* (Tair-9.5627)/4.9923 +0.247* (RH-77.296)/22.233999999999995 -0.023* (u-0.09975)/0.23903999999999997 -0.137* (SatVapPr-1.1916)/0.4644999999999999 -0.190* (VapPress-1.186)/0.0939000000000001 +0.250* (Battery-12.522)/0.017999999999998906 +0.078* power((Day-86.0)/10.0;2)+0.066* power((Time-300.0)/1700.0;2)+0.023* power((Rs--0.0644)/0.0644;2)+0.245* power((Rn--60.302)/60.302;2)-0.044* power((PAR--1.2366)/1.2366;2)-0.174* power((Tair-9.5627)/4.9923;2)+0.287* power((RH-77.296)/22.233999999999995;2)+0.217* power((u-0.09975)/0.23903999999999997;2)+0.030* power((SatVapPr-1.1916)/0.4644999999999999;2)+0.389* power((VapPress-1.186)/0.0939000000000001;2)+0.220* power((Battery-12.522)/0.017999999999998906;2)-0.147</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_Polynomial+model+with+max+degree+2%2C+fold+8.png'/><DIV>Behaviour of model:regression2D_Polynomial model with max degree 2, fold 8.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (162)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>6.984109162109535E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>6.984109162109535E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (163)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.5834357158794887E-9</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.5834357158794887E-9</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 9 (164)'>Fold 9</H3>
+<div class='level3'>
+<H4 id='Models (165)'>Models</H4>
+<div class='level4'>
+<P>water = -0.295* (Day-86.0)/10.0 +0.146* (Time-300.0)/1700.0 -0.039* (Rs--0.0644)/0.0644 -0.171* (Rn--60.302)/60.302 -0.346* (PAR--1.2366)/1.2366 +0.140* (Tair-9.5627)/4.9923 +0.264* (RH-77.296)/22.233999999999995 -0.009* (u-0.09975)/0.23903999999999997 +0.075* (SatVapPr-1.1916)/0.4644999999999999 +0.103* (VapPress-1.186)/0.0939000000000001 +0.366* (Battery-12.522)/0.017999999999998906 -0.066* power((Day-86.0)/10.0;2)+0.149* power((Time-300.0)/1700.0;2)+0.210* power((Rs--0.0644)/0.0644;2)-0.051* power((Rn--60.302)/60.302;2)-0.286* power((PAR--1.2366)/1.2366;2)+0.174* power((Tair-9.5627)/4.9923;2)-0.063* power((RH-77.296)/22.233999999999995;2)+0.050* power((u-0.09975)/0.23903999999999997;2)-0.174* power((SatVapPr-1.1916)/0.4644999999999999;2)-0.184* power((VapPress-1.186)/0.0939000000000001;2)+0.478* power((Battery-12.522)/0.017999999999998906;2)+0.010</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_Polynomial+model+with+max+degree+2%2C+fold+9.png'/><DIV>Behaviour of model:regression2D_Polynomial model with max degree 2, fold 9.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (166)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>4.60562069491372E-8</TD></TR>
+<TR><TD>OVERALL</TD><TD>4.60562069491372E-8</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (167)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>5.835746907933981E-8</TD></TR>
+<TR><TD>OVERALL</TD><TD>5.835746907933981E-8</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 10 (168)'>Fold 10</H3>
+<div class='level3'>
+<H4 id='Models (169)'>Models</H4>
+<div class='level4'>
+<P>water = 0.199* (Day-86.0)/10.0 +0.230* (Time-300.0)/1700.0 +0.354* (Rs--0.0644)/0.0644 +0.264* (Rn--60.302)/60.302 -0.192* (PAR--1.2366)/1.2366 -0.119* (Tair-9.5627)/4.9923 -0.122* (RH-77.296)/22.233999999999995 +0.296* (u-0.09975)/0.23903999999999997 +0.170* (SatVapPr-1.1916)/0.4644999999999999 +1.011E-4* (VapPress-1.186)/0.0939000000000001 +0.237* (Battery-12.522)/0.017999999999998906 -0.239* power((Day-86.0)/10.0;2)-0.272* power((Time-300.0)/1700.0;2)-0.019* power((Rs--0.0644)/0.0644;2)-0.001* power((Rn--60.302)/60.302;2)+0.276* power((PAR--1.2366)/1.2366;2)-0.220* power((Tair-9.5627)/4.9923;2)+0.257* power((RH-77.296)/22.233999999999995;2)-0.134* power((u-0.09975)/0.23903999999999997;2)-0.134* power((SatVapPr-1.1916)/0.4644999999999999;2)-0.083* power((VapPress-1.186)/0.0939000000000001;2)-0.151* power((Battery-12.522)/0.017999999999998906;2)+0.339</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_Polynomial+model+with+max+degree+2%2C+fold+10.png'/><DIV>Behaviour of model:regression2D_Polynomial model with max degree 2, fold 10.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (170)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.355917970381688E-8</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.355917970381688E-8</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (171)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.359792470799766E-8</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.359792470799766E-8</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+</div>
+<H2 id='Crossvalidation Strategy: GAME-gmdh (172)'>Crossvalidation Strategy: GAME-gmdh</H2>
+<div class='level2'>
+<H3>Crossvalidation: Regression Results on train data (GAME-gmdh)</H3>
+<P>10-th fold crossvalidation.</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>3.980966280028474E-11</TD></TR>
+<TR><TD>OVERALL</TD><TD>3.980966280028474E-11</TD></TR>
+</TABLE>
+</P>
+<H3>Crossvalidation: Regression Results on test data (GAME-gmdh)</H3>
+<P>10-th fold crossvalidation.</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>4.217568890298055E-11</TD></TR>
+<TR><TD>OVERALL</TD><TD>4.217568890298055E-11</TD></TR>
+</TABLE>
+</P>
+<H3 id='Fold 1 (173)'>Fold 1</H3>
+<div class='level3'>
+<H4 id='Models (174)'>Models</H4>
+<div class='level4'>
+<P>water = -0.127* (Day-86.0)/10.0 +0.071* (Time-300.0)/1700.0 -0.389* (SatVapPr-1.1916)/0.4644999999999999 +0.057* (VapPress-1.186)/0.0939000000000001 +0.611* (Battery-12.522)/0.017999999999998906 +0.388</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-gmdh%2C+fold+1.png'/><DIV>Behaviour of model:regression2D_GAME-gmdh, fold 1.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (175)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.0584182778964289E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.0584182778964289E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (176)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.0431444859552239E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.0431444859552239E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 2 (177)'>Fold 2</H3>
+<div class='level3'>
+<H4 id='Models (178)'>Models</H4>
+<div class='level4'>
+<P>water = -1.0* (SatVapPr-1.1916)/0.4644999999999999 +1.0</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-gmdh%2C+fold+2.png'/><DIV>Behaviour of model:regression2D_GAME-gmdh, fold 2.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (179)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (180)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 3 (181)'>Fold 3</H3>
+<div class='level3'>
+<H4 id='Models (182)'>Models</H4>
+<div class='level4'>
+<P>water = -0.524* (Day-86.0)/10.0 +0.755* (Rn--60.302)/60.302 +0.181* (PAR--1.2366)/1.2366 +0.471</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-gmdh%2C+fold+3.png'/><DIV>Behaviour of model:regression2D_GAME-gmdh, fold 3.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (183)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>2.9882723387783735E-10</TD></TR>
+<TR><TD>OVERALL</TD><TD>2.9882723387783735E-10</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (184)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>3.1287263382225893E-10</TD></TR>
+<TR><TD>OVERALL</TD><TD>3.1287263382225893E-10</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 4 (185)'>Fold 4</H3>
+<div class='level3'>
+<H4 id='Models (186)'>Models</H4>
+<div class='level4'>
+<P>water = -0.999* (Time-300.0)/1700.0 +0.999</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-gmdh%2C+fold+4.png'/><DIV>Behaviour of model:regression2D_GAME-gmdh, fold 4.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (187)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.8129866073473578E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.8129866073473578E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (188)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 5 (189)'>Fold 5</H3>
+<div class='level3'>
+<H4 id='Models (190)'>Models</H4>
+<div class='level4'>
+<P>water = 0.033* (Time-300.0)/1700.0 +0.051* (Rn--60.302)/60.302 +0.091* (Tair-9.5627)/4.9923 +0.232* (RH-77.296)/22.233999999999995 -0.127* (u-0.09975)/0.23903999999999997 -0.119* (SatVapPr-1.1916)/0.4644999999999999 -0.222* (VapPress-1.186)/0.0939000000000001 +0.387* (Battery-12.522)/0.017999999999998906 +0.343</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-gmdh%2C+fold+5.png'/><DIV>Behaviour of model:regression2D_GAME-gmdh, fold 5.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (191)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.868783819980842E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.868783819980842E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (192)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.7554167342883506E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.7554167342883506E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 6 (193)'>Fold 6</H3>
+<div class='level3'>
+<H4 id='Models (194)'>Models</H4>
+<div class='level4'>
+<P>water = 1.060/(1+exp(-(1.333* (Rn--60.302)/60.302 -1.950* (Tair-9.5627)/4.9923 -2.175* (u-0.09975)/0.23903999999999997 -1.758* (SatVapPr-1.1916)/0.4644999999999999 + 1.891* (Battery-12.522)/0.017999999999998906 + 0.044)))+-0.003</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-gmdh%2C+fold+6.png'/><DIV>Behaviour of model:regression2D_GAME-gmdh, fold 6.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (195)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>6.036526926691046E-11</TD></TR>
+<TR><TD>OVERALL</TD><TD>6.036526926691046E-11</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (196)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.0357127655513665E-10</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.0357127655513665E-10</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 7 (197)'>Fold 7</H3>
+<div class='level3'>
+<H4 id='Models (198)'>Models</H4>
+<div class='level4'>
+<P>water = 0.539* (Rn--60.302)/60.302 -0.199* (PAR--1.2366)/1.2366 +0.454* (RH-77.296)/22.233999999999995 -0.110* (u-0.09975)/0.23903999999999997 +0.167</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-gmdh%2C+fold+7.png'/><DIV>Behaviour of model:regression2D_GAME-gmdh, fold 7.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (199)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>1.850371707708594E-17</TD></TR>
+<TR><TD>OVERALL</TD><TD>1.850371707708594E-17</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (200)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 8 (201)'>Fold 8</H3>
+<div class='level3'>
+<H4 id='Models (202)'>Models</H4>
+<div class='level4'>
+<P>water = -0.256* (Day-86.0)/10.0 +0.016* (Rn--60.302)/60.302 +0.731* (Battery-12.522)/0.017999999999998906 +0.256</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-gmdh%2C+fold+8.png'/><DIV>Behaviour of model:regression2D_GAME-gmdh, fold 8.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (203)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>3.890314278744143E-11</TD></TR>
+<TR><TD>OVERALL</TD><TD>3.890314278744143E-11</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (204)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>5.3123061505289115E-12</TD></TR>
+<TR><TD>OVERALL</TD><TD>5.3123061505289115E-12</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 9 (205)'>Fold 9</H3>
+<div class='level3'>
+<H4 id='Models (206)'>Models</H4>
+<div class='level4'>
+<P>water = -0.370* (Day-86.0)/10.0 -0.322* (Tair-9.5627)/4.9923 -0.307* (u-0.09975)/0.23903999999999997 +1.0</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-gmdh%2C+fold+9.png'/><DIV>Behaviour of model:regression2D_GAME-gmdh, fold 9.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (207)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>5.551115123125783E-17</TD></TR>
+<TR><TD>OVERALL</TD><TD>5.551115123125783E-17</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (208)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>0.0</TD></TR>
+<TR><TD>OVERALL</TD><TD>0.0</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+<H3 id='Fold 10 (209)'>Fold 10</H3>
+<div class='level3'>
+<H4 id='Models (210)'>Models</H4>
+<div class='level4'>
+<P>water = 0.097* (Day-86.0)/10.0 +0.087* (Rn--60.302)/60.302 -0.266* (Tair-9.5627)/4.9923 -0.143* (u-0.09975)/0.23903999999999997 -0.014* (SatVapPr-1.1916)/0.4644999999999999 +0.612* (Battery-12.522)/0.017999999999998906 +0.326</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793201070%2Fregression2D_GAME-gmdh%2C+fold+10.png'/><DIV>Behaviour of model:regression2D_GAME-gmdh, fold 10.png</DIV></DIV></P>
+</div>
+<H4 id='Regression Results on train data (211)'>Regression Results on train data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>4.340369193899041E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>4.340369193899041E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+<H4 id='Regression Results on test data (212)'>Regression Results on test data</H4>
+<div class='level4'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Root Mean Square</CAPTION>
+<TR><TH>Output</TH><TH>RMS</TH></TR>
+<TR><TD>water</TD><TD>3.9264575898409783E-16</TD></TR>
+<TR><TD>OVERALL</TD><TD>3.9264575898409783E-16</TD></TR>
+</TABLE>
+</P>
+</div>
+</div>
+</div>
+</div>
+</div>
+</BODY>
+</HTML>

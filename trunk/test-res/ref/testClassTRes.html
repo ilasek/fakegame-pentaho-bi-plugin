@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML>
+<HEAD><TITLE>Report name</TITLE><link rel='stylesheet' media='screen' type='text/css' href='/pentaho/content/fake-game-static/report-html/screen.css' /></HEAD>
+<BODY>
+<div class='fakereport'>
+<div class='bar' id='bar__top'>
+<div class='bar-left' id='bar__topleft'>
+<a href='http://fakegame.sourceforge.net' class='wikilink2' title='FAKE GAME Project' rel='nofollow'>FAKE GAME Report</a>
+</div>
+</div>
+<H1 id='Table of Contents (1)'>Table of Contents</H1>
+<div class='level1'>
+<OL>
+<LI><A href='#Table of Contents (1)' class='wikilink1'>Table of Contents</A></LI>
+<LI><A href='#Overview (2)' class='wikilink1'>Overview</A></LI>
+<LI><A href='#Operation Flow (3)' class='wikilink1'>Operation Flow</A></LI>
+<LI><A href='#Dataset Visualizations (4)' class='wikilink1'>Dataset Visualizations</A></LI>
+<LI><A href='#Feature Ranking (5)' class='wikilink1'>Feature Ranking</A></LI>
+<LI><A href='#Dataset Projection to 2D (6)' class='wikilink1'>Dataset Projection to 2D</A></LI>
+<LI><A href='#Whole Dataset Strategy: null (7)' class='wikilink1'>Whole Dataset Strategy: null</A></LI>
+<OL>
+<LI><A href='#Classifier (8)' class='wikilink1'>Classifier</A></LI>
+<LI><A href='#Classification Results on train data (9)' class='wikilink1'>Classification Results on train data</A></LI>
+</OL></OL></div>
+<H1 id='Overview (2)'>Overview</H1>
+<div class='level1'>
+<P>
+<TABLE class='inline'>
+<CAPTION>General information</CAPTION>
+<TR><TH>Data file:</TH><TD><STRONG>biresultset</STRONG></TD></TR>
+<TR><TH>Mining type:</TH><TD><STRONG>CLASSIFICATION</STRONG></TD></TR>
+<TR><TH># of input attributes:</TH><TD>4</TD></TR>
+<TR><TH># of classes:</TH><TD>3</TD></TR>
+<TR><TH>Instances:</TH><TD>18</TD></TR>
+</TABLE>
+</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Input attributes</CAPTION>
+<TR><TH>Attribute</TH><TH>Type</TH><TH>Min</TH><TH>Max</TH><TH>Mean</TH><TH>Median</TH></TR>
+<TR><TD>sepal_length</TD><TD>NUMERIC</TD><TD>5.1</TD><TD>6.2</TD><TD>5.733333333333334</TD><TD>5.9</TD></TR>
+<TR><TD>sepal_width</TD><TD>NUMERIC</TD><TD>2.9</TD><TD>3.5</TD><TD>3.1333333333333333</TD><TD>3.0</TD></TR>
+<TR><TD>pteal_length</TD><TD>NUMERIC</TD><TD>1.4</TD><TD>5.1</TD><TD>3.6000000000000005</TD><TD>4.3</TD></TR>
+<TR><TD>petal_width</TD><TD>NUMERIC</TD><TD>0.2</TD><TD>1.8</TD><TD>1.1000000000000003</TD><TD>1.3</TD></TR>
+</TABLE>
+</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Class distribution</CAPTION>
+<TR><TH>Class</TH><TH>Instances</TH><TH>%</TH></TR>
+<TR><TD>Iris-setosa</TD><TD>6</TD><TD>33.333333333333336</TD></TR>
+<TR><TD>Iris-versicolor</TD><TD>6</TD><TD>33.333333333333336</TD></TR>
+<TR><TD>Iris-virginica</TD><TD>6</TD><TD>33.333333333333336</TD></TR>
+<TR><TD><STRONG>Total</STRONG></TD><TD><STRONG>18</STRONG></TD><TD><STRONG>100</STRONG></TD></TR>
+</TABLE>
+</P>
+</div>
+<H1 id='Operation Flow (3)'>Operation Flow</H1>
+<div class='level1'>
+<P>
+<TABLE class='inline'>
+<CAPTION>Operation flow</CAPTION>
+<TR><TH>Operation</TH><TH>Time</TH><TH>Description</TH></TR>
+<TR><TD>Register subreports</TD><TD>00:00:00:015</TD><TD>Registers and defines order of subreports.</TD></TR>
+<TR><TD>ImportPentahoBI</TD><TD>00:00:00:015</TD><TD>Is able to import the result-set from another action in Pentaho BI action sequence</TD></TR>
+<TR><TD>Prepare reports</TD><TD>00:00:00:001</TD><TD>Prepares a report directory.</TD></TR>
+<TR><TD>Basic Preprocessing</TD><TD>00:00:00:001</TD><TD>Performs missing values imputations, ...</TD></TR>
+<TR><TD>Data reduction</TD><TD>00:00:00:000</TD><TD>Reduces the number of instances, if the dataset is too large.</TD></TR>
+<TR><TD>Feature ranking</TD><TD>00:00:01:439</TD><TD>Feature ranking of dataset attributes</TD></TR>
+<TR><TD>Visualizes dataset</TD><TD>00:00:01:547</TD><TD>Visualizes dataset using histograms, parallel plots, Andrew's curves, etc.</TD></TR>
+<TR><TD>Project dataset to 2D</TD><TD>00:00:00:002</TD><TD>Projects dataset to 2D using Sammon's or Drchal's projection.</TD></TR>
+<TR><TD>Whole dataset Strategy</TD><TD>00:00:00:803</TD><TD>The whole dataset is used to train models.</TD></TR>
+<TR><TD>Operation Flow Info</TD><TD>00:00:00:000</TD><TD>Constructs this subreport.</TD></TR>
+<TR><TD><STRONG>Total</STRONG></TD><TD><STRONG>00:00:03:823</STRONG></TD><TD><STRONG>Total time spent.</STRONG></TD></TR>
+</TABLE>
+</P>
+</div>
+<H1 id='Dataset Visualizations (4)'>Dataset Visualizations</H1>
+<div class='level1'>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793176204%2Finput_hist_sepal_length_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793176204%2Finput_hist_sepal_width_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793176204%2Finput_hist_pteal_length_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793176204%2Finput_hist_petal_width_.png'/><DIV></DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793176204%2Fparallel.png'/><DIV>Parallel plot </DIV></DIV></P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793176204%2Fandrew.png'/><DIV>Andrew's curves</DIV></DIV></P>
+</div>
+<H1 id='Feature Ranking (5)'>Feature Ranking</H1>
+<div class='level1'>
+<P>Note: the number of attributes in graphs may be reduced to fit.</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>SimpleMIMethod</CAPTION>
+<TR><TH>Rank</TH><TH>1</TH><TH>2</TH><TH>3</TH><TH>4</TH></TR>
+<TR><TH>Attribute</TH><TD>sepal_length</TD><TD>sepal_width</TD><TD>pteal_length</TD><TD>petal_width</TD></TR>
+<TR><TH>Importance</TH><TD>0.5032583347756456</TD><TD>0.3921472236645346</TD><TD>0.2810361125534235</TD><TD>0.2810361125534235</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793176204%2Ffr_0_SimpleMIMethod.png'/><DIV></DIV></DIV></P>
+<P>
+<TABLE class='inline'>
+<CAPTION>MIFS-Method (Create feature subset by using MIFS method.)</CAPTION>
+<TR><TH>Rank</TH><TH>1</TH><TH>2</TH><TH>3</TH><TH>4</TH></TR>
+<TR><TH>Attribute</TH><TD>sepal_length</TD><TD>sepal_width</TD><TD>pteal_length</TD><TD>petal_width</TD></TR>
+</TABLE>
+</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>MIFS-U-Method (Create feature subset by using MIFS method.)</CAPTION>
+<TR><TH>Rank</TH><TH>1</TH><TH>2</TH><TH>3</TH><TH>4</TH></TR>
+<TR><TH>Attribute</TH><TD>sepal_length</TD><TD>sepal_width</TD><TD>pteal_length</TD><TD>petal_width</TD></TR>
+</TABLE>
+</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>AMIFS-Method (Create feature subset by using AMIFS method.)</CAPTION>
+<TR><TH>Rank</TH><TH>1</TH><TH>2</TH><TH>3</TH><TH>4</TH></TR>
+<TR><TH>Attribute</TH><TD>sepal_length</TD><TD>sepal_width</TD><TD>pteal_length</TD><TD>petal_width</TD></TR>
+</TABLE>
+</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>XyMI (Compute ranks as a sorted order of sums of MI between specific attribute and  the rest attributes. )</CAPTION>
+<TR><TH>Rank</TH><TH>1</TH><TH>2</TH><TH>3</TH><TH>4</TH></TR>
+<TR><TH>Attribute</TH><TD>pteal_length</TD><TD>petal_width</TD><TD>sepal_length</TD><TD>sepal_width</TD></TR>
+<TR><TH>Importance</TH><TD>87.76441670993593</TD><TD>81.09775004326927</TD><TD>54.06516669551277</TD><TD>33.699250014423114</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793176204%2Ffr_4_XyMI.png'/><DIV></DIV></DIV></P>
+</div>
+<H1 id='Dataset Projection to 2D (6)'>Dataset Projection to 2D</H1>
+<div class='level1'>
+</div>
+<H1 id='Whole Dataset Strategy: null (7)'>Whole Dataset Strategy: null</H1>
+<div class='level1'>
+<H2 id='Classifier (8)'>Classifier</H2>
+<div class='level2'>
+<P><BR/>
+Iris-setosa=0.123* sepal_length +0.390* sepal_width +0.275* pteal_length -0.220* petal_width -0.232* power(sepal_length;2)+0.348* power(sepal_width;2)-0.030* power(pteal_length;2)+0.024* power(petal_width;2)+0.066* power(sepal_length;3)+0.175* power(sepal_width;3)-0.221* power(pteal_length;3)+0.018* power(petal_width;3)+0.085;<BR/>
+Iris-versicolor=-3.0* sepal_length -1.375* sepal_width -0.25* pteal_length +2.0* petal_width +0.187* power(sepal_length;2)-0.75* power(sepal_width;2)+0.625* power(pteal_length;2)+4.0* power(petal_width;2)-0.5* power(sepal_length;3)+0.25* power(sepal_width;3)-0.875* power(pteal_length;3)-0.687* power(petal_width;3)+0.75;<BR/>
+Iris-virginica=-6.687* sepal_length -7.5* sepal_width -1.0* pteal_length +1.0* petal_width -1.5* power(sepal_length;2)+0.0* power(sepal_width;2)-1.25* power(pteal_length;2)+0.75* power(petal_width;2)-1.0* power(sepal_length;3)+1.0* power(sepal_width;3)+0.0* power(pteal_length;3)+0.0* power(petal_width;3)+7.125;</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793176204%2FClassifier2Dplot_null.png'/><DIV>Behaviour of classifier:Classifier2Dplot_null.png</DIV></DIV></P>
+</div>
+<H2 id='Classification Results on train data (9)'>Classification Results on train data</H2>
+<div class='level2'>
+<P>Class Assignment Accuracy: 66.66666666666666% (12/18 correct)</P>
+<P>
+<TABLE class='inline'>
+<CAPTION>Confusion Matrix</CAPTION>
+<TR><TH>real-classified</TH><TH>Iris-setosa</TH><TH>Iris-versicolor</TH><TH>Iris-virginica</TH></TR>
+<TR><TH>Iris-setosa</TH><TD>6</TD><TD>0</TD><TD>0</TD></TR>
+<TR><TH>Iris-versicolor</TH><TD>0</TD><TD>6</TD><TD>0</TD></TR>
+<TR><TH>Iris-virginica</TH><TD>0</TD><TD>6</TD><TD>0</TD></TR>
+</TABLE>
+</P>
+<P><DIV class='image'><IMG src = '/pentaho/getImage?image=%2Ffgreport_1271793176204%2Froc_null_train_.png'/><DIV></DIV></DIV></P>
+</div>
+</div>
+</div>
+</BODY>
+</HTML>
