@@ -42,16 +42,16 @@
 
   <resources> 
     <transformation-file> 
-      <file> 
-        <location>/home/ivo/workspace/tomcat-pci-test/biserver-ce/pentaho-solutions/bi-developers/FakeGame/transformations/iris.ktr</location>  
+      <solution-file> 
+        <location>transformations/iris.ktr</location>  
         <mime-type>text/plain</mime-type> 
-      </file> 
+      </solution-file> 
     </transformation-file>  
     <configZip> 
-      <file> 
-        <location>/home/ivo/workspace/tomcat-pci-test/biserver-ce/pentaho-solutions/bi-developers/FakeGame/cfg_quick_linear.zip</location>  
+      <solution-file> 
+        <location>cfg_quick_linear.zip</location>  
         <mime-type>application/zip</mime-type> 
-      </file> 
+      </solution-file> 
     </configZip> 
   </resources>
   

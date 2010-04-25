@@ -1,11 +1,11 @@
 package cz.ilasek.pentaho.biplugin.fakegame.report;
 
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-
 import game.report.SRHTMLRenderer;
 import game.report.srobjects.ISRObjectRenderer;
 import game.report.srobjects.SRImage;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 public class SRPentahoBIImageRendererHTML implements ISRObjectRenderer 
 {

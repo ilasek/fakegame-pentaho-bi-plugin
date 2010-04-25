@@ -69,7 +69,10 @@ public class FakeGameAction implements IStreamingAction
     
     @Override
     public String getMimeType(String arg0) {
-        return "text/html";
+        if (arg0.equals("zippedReport"))
+            return "application/zip";
+        else
+            return "text/html";
     }
 
     @Override

@@ -17,7 +17,6 @@ import fakegame.flow.operations.IDatasetStrategy;
 import fakegame.flow.operations.IEvaluator;
 import fakegame.flow.operations.IHierarchic;
 import fakegame.flow.operations.IModel;
-import fakegame.flow.operations.ImportFile;
 import fakegame.flow.operations.ModelConfigIterator;
 import fakegame.flow.operations.OperationFactory;
 import fakegame.flow.operations.OperationFlow;
