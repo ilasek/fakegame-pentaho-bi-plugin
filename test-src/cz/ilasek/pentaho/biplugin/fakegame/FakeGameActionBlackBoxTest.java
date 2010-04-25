@@ -1,6 +1,7 @@
 package cz.ilasek.pentaho.biplugin.fakegame;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -65,7 +66,7 @@ public class FakeGameActionBlackBoxTest {
         File refFile = new File("test-res/ref/testClassTRes.html");
         File output = new File("test-res/testClassTRes.html");
         OutputStream outputStream = new FileOutputStream(output);
-        SolutionHelper.execute("testing Classification", "testuser", "bi-developers/FakeGame/test-class-fake-game-t.xaction", new HashMap(), outputStream);
+        SolutionHelper.execute("testing Classification", "testuser", "bi-developers/FakeGame/tests/test-class-fake-game-t.xaction", new HashMap(), outputStream);
         compareClassOutputs(output, refFile);
     }
     
@@ -75,7 +76,7 @@ public class FakeGameActionBlackBoxTest {
         File refFile = new File("test-res/ref/testClassWRes.html");
         File output = new File("test-res/testClassWRes.html");
         OutputStream outputStream = new FileOutputStream(output);
-        SolutionHelper.execute("testing Classification", "testuser", "bi-developers/FakeGame/test-class-fake-game-w.xaction", new HashMap(), outputStream);
+        SolutionHelper.execute("testing Classification", "testuser", "bi-developers/FakeGame/tests/test-class-fake-game-w.xaction", new HashMap(), outputStream);
         compareClassOutputs(output, refFile);
     }    
 
@@ -85,7 +86,7 @@ public class FakeGameActionBlackBoxTest {
         File refFile = new File("test-res/ref/testClassCRes.html");
         File output = new File("test-res/testClassCRes.html");
         OutputStream outputStream = new FileOutputStream(output);
-        SolutionHelper.execute("testing Classification", "testuser", "bi-developers/FakeGame/test-class-fake-game-c.xaction", new HashMap(), outputStream);
+        SolutionHelper.execute("testing Classification", "testuser", "bi-developers/FakeGame/tests/test-class-fake-game-c.xaction", new HashMap(), outputStream);
         compareClassOutputs(output, refFile);
     }    
     
@@ -95,7 +96,7 @@ public class FakeGameActionBlackBoxTest {
         File refFile = new File("test-res/ref/testRegTRes.html");
         File output = new File("test-res/testRegTRes.html");
         OutputStream outputStream = new FileOutputStream(output);
-        SolutionHelper.execute("testing Regression", "testuser", "bi-developers/FakeGame/test-regr-fake-game-t.xaction", new HashMap(), outputStream);
+        SolutionHelper.execute("testing Regression", "testuser", "bi-developers/FakeGame/tests/test-regr-fake-game-t.xaction", new HashMap(), outputStream);
         compareRegOutputs(output, refFile);
     }    
     
@@ -105,7 +106,7 @@ public class FakeGameActionBlackBoxTest {
         File refFile = new File("test-res/ref/testRegWRes.html");
         File output = new File("test-res/testRegWRes.html");
         OutputStream outputStream = new FileOutputStream(output);
-        SolutionHelper.execute("testing Regression", "testuser", "bi-developers/FakeGame/test-regr-fake-game-w.xaction", new HashMap(), outputStream);
+        SolutionHelper.execute("testing Regression", "testuser", "bi-developers/FakeGame/tests/test-regr-fake-game-w.xaction", new HashMap(), outputStream);
         compareRegOutputs(output, refFile);
     }    
 
@@ -115,7 +116,7 @@ public class FakeGameActionBlackBoxTest {
         File refFile = new File("test-res/ref/testRegCRes.html");
         File output = new File("test-res/testRegCRes.html");
         OutputStream outputStream = new FileOutputStream(output);
-        SolutionHelper.execute("testing Regression", "testuser", "bi-developers/FakeGame/test-regr-fake-game-c.xaction", new HashMap(), outputStream);
+        SolutionHelper.execute("testing Regression", "testuser", "bi-developers/FakeGame/tests/test-regr-fake-game-c.xaction", new HashMap(), outputStream);
         compareRegOutputs(output, refFile);
     }   
     
