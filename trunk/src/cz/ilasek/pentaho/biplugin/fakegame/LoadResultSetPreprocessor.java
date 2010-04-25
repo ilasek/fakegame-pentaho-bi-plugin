@@ -94,10 +94,14 @@ public class LoadResultSetPreprocessor extends AbstractBaseLoader
             {
                 if (value instanceof Number)
                     value = ((Number) value).doubleValue();
-                else if (store.getAttributeType(i) == DataType.NUMERIC)
-                    value = new Double(value.toString());
-                else
-                    value = value.toString();
+                else {
+                    try {
+                        value = new Double(value.toString());
+                    } catch (NumberFormatException e) {
+                        value = value.toString();
+                        store.setAttributeType(i, DataType.MIXED);
+                    }
+                }
                 
                 store.addDataItem(i++, value);
             }

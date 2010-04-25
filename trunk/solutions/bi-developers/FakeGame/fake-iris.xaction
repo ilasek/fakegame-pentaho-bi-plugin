@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<action-sequence> 
+  <title>FakeIris</title>
+  <version>1</version>
+  <logging-level>DEBUG</logging-level>
+  <documentation> 
+    <author>Ivo Lasek</author>  
+    <description>An Action Sequence to test the Fake Game Action.</description>  
+    <help>%help</help>  
+    <result-type>rule</result-type>  
+    <icon>HelloWorld.png</icon> 
+  </documentation>
+
+  <inputs> 
+    <configurationDirectory type="string"> 
+      <default-value><![CDATA[/home/ivo/workspace/fakegame/core/trunk/target/cfg/fake/quick_linear]]></default-value>  
+      <sources> 
+        <request>configurationDirectory</request> 
+      </sources> 
+    </configurationDirectory>  
+    <experimentSeries type="string"> 
+      <sources> 
+        <request>experimentSeries</request> 
+      </sources>  
+      <default-value><![CDATA[false]]></default-value> 
+    </experimentSeries>  
+    <trainTestStrategy type="string"> 
+      <sources> 
+        <request>trainTestStrategy</request> 
+      </sources>  
+      <default-value><![CDATA[whole-set]]></default-value> 
+    </trainTestStrategy> 
+  </inputs>
+
+  <outputs> 
+    <response type="content"> 
+      <destinations> 
+        <response>content</response> 
+      </destinations> 
+    </response> 
+  </outputs>
+
+  <resources> 
+    <transformation-file> 
+      <file> 
+        <location>/home/ivo/workspace/tomcat-pci-test/biserver-ce/pentaho-solutions/bi-developers/FakeGame/transformations/iris.ktr</location>  
+        <mime-type>text/plain</mime-type> 
+      </file> 
+    </transformation-file>  
+    <configZip> 
+      <file> 
+        <location>/home/ivo/workspace/tomcat-pci-test/biserver-ce/pentaho-solutions/bi-developers/FakeGame/cfg_quick_linear.zip</location>  
+        <mime-type>application/zip</mime-type> 
+      </file> 
+    </configZip> 
+  </resources>
+  
+  <actions> 
+    <action-definition> 
+      <component-name>KettleComponent</component-name>
+      <action-type>Pentaho Data Integration</action-type>
+      <action-resources> 
+        <transformation-file type="resource"/> 
+      </action-resources>
+      <action-outputs> 
+        <transformation-output-rows type="result-set" mapping="data"/> 
+      </action-outputs>
+      <component-definition> 
+        <monitor-step><![CDATA[CSV file input]]></monitor-step> 
+      </component-definition> 
+    </action-definition>
+  
+    <action-definition> 
+      <component-name>FakeGameAction</component-name>
+      <action-type>Fake Game Action</action-type>
+      <action-inputs> 
+        <experimentSeries type="string"/>  
+        <trainTestStrategy type="string"/>  
+        <data type="result-set"/> 
+      </action-inputs>
+      <action-resources> 
+        <configZip type="resource"/> 
+      </action-resources>
+      <action-outputs> 
+        <zippedReport type="content"/>  
+        <response type="content"/> 
+      </action-outputs>
+      <component-definition/>  
+      <action-name>Test the sample Echo component</action-name>  
+      <logging-level>DEBUG</logging-level> 
+    </action-definition>
+ 
+  </actions> 
+</action-sequence>
